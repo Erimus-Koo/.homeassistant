@@ -1,0 +1,41 @@
+# https://www.home-assistant.io/integrations/group/
+
+light:  # 开关时可整组开关
+  entities:
+    - switch.light_1_smart
+    - switch.light_2_smart
+    - switch.light_3_smart
+  control: hidden
+
+theater:  # 前端有用到
+  icon: mdi:movie-open
+  entities:
+    - switch.theater_mode
+    - switch.amplifier_power
+    - switch.projector_power
+    - switch.screen
+    - switch.screen_pause
+  control: hidden
+
+# all_switches:
+  # control: hidden
+# all_scripts:
+  # control: hidden
+# all_automations:
+  # control: hidden
+
+# amplifier:
+#   entities:
+#     - switch.amplifier_power
+#     - switch.amplifier_mute
+#     - switch.amplifier_volume_up
+#     - switch.amplifier_volume_down
+
+# aircon:
+#   entities:
+#     - switch.aircon_heat_30
+#     - switch.aircon_cool_28
+
+# others:
+#   entities:
+#     - switch.water_pump

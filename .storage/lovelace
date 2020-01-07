@@ -1,0 +1,306 @@
+{
+    "data": {
+        "config": {
+            "custom_header": {
+                "background": "black",
+                "chevrons": false,
+                "compact_mode": true,
+                "disabled_mode": true,
+                "editor_warnings": false,
+                "hidden_tab_redirect": false,
+                "shadow": false
+            },
+            "resources": [
+                {
+                    "type": "module",
+                    "url": "/community_plugin/mini-graph-card/mini-graph-card-bundle.beta.js"
+                }
+            ],
+            "title": "Home 402",
+            "views": [
+                {
+                    "badges": [],
+                    "cards": [
+                        {
+                            "cards": [
+                                {
+                                    "cards": [
+                                        {
+                                            "entity": "group.all_switches",
+                                            "icon_height": "88px",
+                                            "show_name": false,
+                                            "tap_action": {
+                                                "action": "more-info"
+                                            },
+                                            "type": "entity-button"
+                                        },
+                                        {
+                                            "entity": "group.all_scripts",
+                                            "icon_height": "88px",
+                                            "show_name": false,
+                                            "tap_action": {
+                                                "action": "more-info"
+                                            },
+                                            "type": "entity-button"
+                                        },
+                                        {
+                                            "entity": "group.all_devices",
+                                            "icon_height": "88px",
+                                            "show_name": false,
+                                            "tap_action": {
+                                                "action": "more-info"
+                                            },
+                                            "type": "entity-button"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
+                                },
+                                {
+                                    "cards": [
+                                        {
+                                            "entity": "switch.light_2",
+                                            "icon_height": "88px",
+                                            "show_name": false,
+                                            "type": "entity-button"
+                                        },
+                                        {
+                                            "entity": "switch.light_3",
+                                            "icon_height": "88px",
+                                            "show_name": false,
+                                            "type": "entity-button"
+                                        },
+                                        {
+                                            "entity": "switch.light_1",
+                                            "icon_height": "88px",
+                                            "show_name": false,
+                                            "type": "entity-button"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
+                                },
+                                {
+                                    "cards": [
+                                        {
+                                            "entity": "script.media_previous",
+                                            "icon_height": "88px",
+                                            "show_name": false,
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "script.media_previous"
+                                            },
+                                            "type": "entity-button"
+                                        },
+                                        {
+                                            "entity": "script.media_play_pause",
+                                            "icon_height": "88px",
+                                            "show_name": false,
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "script.media_play_pause"
+                                            },
+                                            "type": "entity-button"
+                                        },
+                                        {
+                                            "entity": "script.media_next",
+                                            "icon_height": "88px",
+                                            "show_name": false,
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "script.media_next"
+                                            },
+                                            "type": "entity-button"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
+                                },
+                                {
+                                    "cards": [
+                                        {
+                                            "entity": "switch.amplifier_mute",
+                                            "icon_height": "88px",
+                                            "name": "Mute",
+                                            "show_name": false,
+                                            "type": "entity-button"
+                                        },
+                                        {
+                                            "entity": "script.amplifier_volume_down_10_times",
+                                            "icon_height": "88px",
+                                            "name": "Vol--",
+                                            "show_name": false,
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "script.amplifier_volume_down_10_times"
+                                            },
+                                            "type": "entity-button"
+                                        },
+                                        {
+                                            "entity": "script.amplifier_volume_up_10_times",
+                                            "icon_height": "88px",
+                                            "name": "Vol++",
+                                            "show_name": false,
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "script.amplifier_volume_up_10_times"
+                                            },
+                                            "type": "entity-button"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
+                                },
+                                {
+                                    "cards": [
+                                        {
+                                            "entity": "group.theater",
+                                            "icon_height": "88px",
+                                            "name": "Amplifier",
+                                            "show_name": false,
+                                            "tap_action": {
+                                                "action": "more-info"
+                                            },
+                                            "type": "entity-button"
+                                        },
+                                        {
+                                            "entity": "switch.aircon_auto",
+                                            "icon_height": "88px",
+                                            "show_name": false,
+                                            "type": "entity-button"
+                                        },
+                                        {
+                                            "entity": "switch.water_pump",
+                                            "icon_height": "88px",
+                                            "show_name": false,
+                                            "type": "entity-button"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
+                                }
+                            ],
+                            "type": "vertical-stack"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.waqi_pudong_monitoring_station_shanghai_shang_hai_pu_dong_jian_ce_zhan",
+                                            "name": "PD"
+                                        },
+                                        {
+                                            "entity": "sensor.waqi_shanghai_us_consulate_shanghai_shang_hai_shang_hai_mei_guo_zong_ling_shi_guan",
+                                            "name": "US"
+                                        },
+                                        {
+                                            "entity": "sensor.waqi_shanghai_shang_hai",
+                                            "name": "SH"
+                                        }
+                                    ],
+                                    "font_size": 75,
+                                    "hours_to_show": 48,
+                                    "icon": "mdi:skull",
+                                    "line_width": 4,
+                                    "name": "Shanghai AQI",
+                                    "show": {
+                                        "fill": false,
+                                        "icon": false,
+                                        "legend": false,
+                                        "name": false
+                                    },
+                                    "type": "custom:mini-graph-card"
+                                },
+                                {
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.pudong_temperature",
+                                            "name": "PD"
+                                        },
+                                        {
+                                            "entity": "sensor.us_consulate_temperature",
+                                            "name": "US"
+                                        },
+                                        {
+                                            "entity": "sensor.shanghai_temperature",
+                                            "name": "SH"
+                                        }
+                                    ],
+                                    "font_size": 75,
+                                    "hours_to_show": 48,
+                                    "icon": "mdi:thermometer",
+                                    "line_width": 4,
+                                    "name": "Last 3d Temp",
+                                    "show": {
+                                        "fill": false,
+                                        "icon": false,
+                                        "legend": false,
+                                        "name": false
+                                    },
+                                    "type": "custom:mini-graph-card"
+                                }
+                            ],
+                            "type": "horizontal-stack"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "aggregate_func": "max",
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.theater_mode_time",
+                                            "show_graph": false
+                                        },
+                                        {
+                                            "entity": "sensor.theater_mode_time_daily"
+                                        }
+                                    ],
+                                    "font_size": 75,
+                                    "group_by": "date",
+                                    "hours_to_show": 168,
+                                    "icon": "mdi:movie-open",
+                                    "refresh_interval": 0,
+                                    "show": {
+                                        "graph": "bar",
+                                        "icon": false,
+                                        "name": false
+                                    },
+                                    "type": "custom:mini-graph-card",
+                                    "unit": "h Theater"
+                                },
+                                {
+                                    "aggregate_func": "max",
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.aircon_time",
+                                            "show_graph": false
+                                        },
+                                        {
+                                            "color": "#e74c3c",
+                                            "entity": "sensor.aircon_time_daily"
+                                        }
+                                    ],
+                                    "font_size": 75,
+                                    "group_by": "date",
+                                    "hours_to_show": 168,
+                                    "icon": "mdi:fan",
+                                    "refresh_interval": 0,
+                                    "show": {
+                                        "graph": "bar",
+                                        "icon": false,
+                                        "name": false
+                                    },
+                                    "type": "custom:mini-graph-card",
+                                    "unit": "h Aircon"
+                                }
+                            ],
+                            "type": "horizontal-stack"
+                        }
+                    ],
+                    "icon": "mdi:home",
+                    "panel": false,
+                    "path": "default_view",
+                    "title": "Home"
+                }
+            ]
+        }
+    },
+    "key": "lovelace",
+    "version": 1
+}

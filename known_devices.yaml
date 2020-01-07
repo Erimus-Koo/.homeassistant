@@ -1,0 +1,48 @@
+# 这里是配合configuration.yaml里的device_tracker使用的。
+# https://www.home-assistant.io/integrations/device_tracker/
+
+# 通过ping判断手机状态
+pingiphonexr:  # 这个名称要和device tracker中的一致
+  hide_if_away: false
+  icon: mdi:cellphone-iphone
+  mac: !secret iphone_xr_mac
+  name: Ping iPhoneXR
+  picture:
+  track: true
+  vendor: Apple, Inc.
+  # interval_seconds: 12  # default 12
+  # consider_home: 60  # default 180 只判断离线满xx秒后算离开
+
+# 以下是iCloud自动生成的
+erimussiphonexr:
+  hide_if_away: false
+  icon: mdi:cellphone-iphone
+  mac:
+  name: Erimus's iPhoneXR
+  picture:
+  track: true
+  # consider_home: 60
+
+erimussmba:
+  hide_if_away: false
+  icon: mdi:laptop-mac
+  mac:
+  name: Erimus’s MBA
+  picture:
+  track: false
+
+erimussiphone5s:
+  hide_if_away: false
+  icon: mdi:cellphone-iphone
+  mac:
+  name: Erimus’s iPhone5s
+  picture:
+  track: false
+
+erimussiphone6:
+  hide_if_away: false
+  icon: mdi:face-woman
+  mac:
+  name: Erimus’s iPhone6
+  picture:
+  track: false

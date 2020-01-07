@@ -1,0 +1,82 @@
+# 这里可以用来自定义一些显示图标和名称，统一管理，省得写在lovelace里。
+# https://www.home-assistant.io/docs/configuration/customizing-devices/
+
+# 图标都是mdi:name的形式
+# 在这个网站查询图标名称 https://materialdesignicons.com/
+
+switch.amplifier_power:
+  icon: 'mdi:speaker'
+switch.amplifier_mute:
+  icon: 'mdi:volume-mute'
+switch.amplifier_volume_up:
+  icon: 'mdi:volume-plus'
+switch.amplifier_volume_down:
+  icon: 'mdi:volume-minus'
+
+switch.projector_power:
+  icon: 'mdi:projector'
+
+switch.screen:
+  icon: 'mdi:projector-screen'
+switch.screen_pause:
+  icon: 'mdi:pause'
+
+switch.aircon_heat_30:
+  icon: 'mdi:fire'
+switch.aircon_cool_28:
+  icon: 'mdi:snowflake'
+switch.aircon_power_off:
+  icon: 'mdi:power-standby'
+
+switch.light:
+  hidden: true  # 隐藏使其不在前端出现
+switch.light_1:
+  icon: 'mdi:wall-sconce-flat'
+switch.light_2:
+  icon: 'mdi:ceiling-light'
+switch.light_3:
+  icon: 'mdi:track-light'
+switch.light_all:
+  icon: 'mdi:home-lightbulb'
+
+switch.water_pump:
+  icon: 'mdi:water-pump'
+
+script.amplifier_volume_up_10_times:
+  icon: 'mdi:volume-plus'
+script.amplifier_volume_down_10_times:
+  icon: 'mdi:volume-minus'
+
+script.media_play_pause:
+  icon: mdi:play-pause
+script.media_previous:
+  icon: mdi:skip-backward
+script.media_next:
+  icon: mdi:skip-forward
+
+automation.home_return:
+  icon: mdi:location-enter
+automation.home_leave:
+  icon: mdi:location-exit
+automation.auto_turn_off_pump:
+  icon: 'mdi:water-pump'
+
+# 让 homekit 能识别这个是空气质量感应器
+# https://www.home-assistant.io/integrations/homekit/
+sensor.waqi_pudong_monitoring_station_shanghai_shang_hai_pu_dong_jian_ce_zhan:
+  icon: mdi:skull
+  friendly_name: AQI
+  device_class: 'pm25'
+
+group.all_switches:
+  icon: 'mdi:toggle-switch'
+  friendly_name: Switches
+group.all_scripts:
+  icon: 'mdi:script-outline'
+  friendly_name: Scripts
+group.all_devices:
+  icon: 'mdi:cellphone-iphone'
+  friendly_name: Devices
+group.all_automations:
+  icon: 'mdi:auto-fix'
+  friendly_name: Automations

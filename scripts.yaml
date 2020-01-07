@@ -1,0 +1,139 @@
+# 这里是脚本，可以理解为一些组合命令。
+# 不同于automation，不会自动触发。
+# 虽然script也完全可以写到switch里，但有时候为了保持switch简单易读，就分离出来。
+# https://www.home-assistant.io/integrations/script/
+
+# amplifier ==============================
+amplifier_volume_up_10_times:
+  alias: Amplifier Vol ++
+  sequence:
+    - service: switch.turn_on
+      entity_id: switch.amplifier_volume_up
+    - service: switch.turn_on
+      entity_id: switch.amplifier_volume_up
+    - service: switch.turn_on
+      entity_id: switch.amplifier_volume_up
+    - service: switch.turn_on
+      entity_id: switch.amplifier_volume_up
+    - service: switch.turn_on
+      entity_id: switch.amplifier_volume_up
+    - service: switch.turn_on
+      entity_id: switch.amplifier_volume_up
+    - service: switch.turn_on
+      entity_id: switch.amplifier_volume_up
+    - service: switch.turn_on
+      entity_id: switch.amplifier_volume_up
+    - service: switch.turn_on
+      entity_id: switch.amplifier_volume_up
+    - service: switch.turn_on
+      entity_id: switch.amplifier_volume_up
+    - delay: 00:00:00
+
+amplifier_volume_down_10_times:
+  alias: Amplifier Vol --
+  sequence:
+    - service: switch.turn_on
+      entity_id: switch.amplifier_volume_down
+    - service: switch.turn_on
+      entity_id: switch.amplifier_volume_down
+    - service: switch.turn_on
+      entity_id: switch.amplifier_volume_down
+    - service: switch.turn_on
+      entity_id: switch.amplifier_volume_down
+    - service: switch.turn_on
+      entity_id: switch.amplifier_volume_down
+    - service: switch.turn_on
+      entity_id: switch.amplifier_volume_down
+    - service: switch.turn_on
+      entity_id: switch.amplifier_volume_down
+    - service: switch.turn_on
+      entity_id: switch.amplifier_volume_down
+    - service: switch.turn_on
+      entity_id: switch.amplifier_volume_down
+    - service: switch.turn_on
+      entity_id: switch.amplifier_volume_down
+    - delay: 00:00:00
+
+# 发送媒体键 shell command 无法被前端直接调用 套个壳
+media_play_pause:
+  alias: Play/Pause
+  sequence:
+    - service: shell_command.send_play_pause
+media_previous:
+  alias: Previous
+  sequence:
+    - service: shell_command.send_previous_track
+media_next:
+  alias: Next
+  sequence:
+    - service: shell_command.send_next_track
+
+# theater mode ==============================
+theater_mode_on:
+  alias: 'Theater Mode ON'
+  sequence:
+    # 状态记录器
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.theater_mode
+    # 放下幕布 不灵敏多按几次
+    - service: switch.turn_on
+      entity_id: switch.screen
+    - service: switch.turn_on
+      entity_id: switch.screen
+    - service: switch.turn_on
+      entity_id: switch.screen
+    - service: switch.turn_on
+      entity_id: switch.screen
+    - service: switch.turn_on
+      entity_id: switch.screen
+    - delay: 00:00:10
+    # 打开投影仪 为了保险多按几次
+    - service: switch.turn_on
+      entity_id: switch.projector_power
+    - service: switch.turn_on
+      entity_id: switch.projector_power
+    - service: switch.turn_on
+      entity_id: switch.projector_power
+    - delay: 00:00:10
+    # 关灯
+    - service: switch.turn_off
+      entity_id: group.light
+
+theater_mode_off:
+  alias: 'Theater Mode OFF'
+  sequence:
+    # 状态记录器
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.theater_mode
+    # 收起幕布 不灵敏多按几次
+    - service: switch.turn_off
+      entity_id: switch.screen
+    - service: switch.turn_off
+      entity_id: switch.screen
+    - service: switch.turn_off
+      entity_id: switch.screen
+    - service: switch.turn_off
+      entity_id: switch.screen
+    - service: switch.turn_off
+      entity_id: switch.screen
+    - delay: 00:00:01
+    # 关闭投影仪 为了保险多按几次
+    - service: switch.turn_off
+      entity_id: switch.projector_power
+    - delay: 00:00:03
+    - service: switch.turn_off
+      entity_id: switch.projector_power
+    - delay: 00:00:03
+    - service: switch.turn_off
+      entity_id: switch.projector_power
+    - delay: 00:00:03
+    - service: switch.turn_off
+      entity_id: switch.projector_power
+    - delay: 00:00:03
+    - service: switch.turn_off
+      entity_id: switch.projector_power
+    # 开灯 天亮的话就不开
+    - service: switch.turn_on
+      data_template:
+        entity_id: >
+          switch.light{% if is_state('sun.sun','below_horizon') %}_2_smart{% endif %}

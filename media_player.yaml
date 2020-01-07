@@ -1,0 +1,18 @@
+# 这里有时候是电视等设备，有时候是远程电脑上的媒体播放器。
+# https://www.home-assistant.io/integrations/media_player/
+
+# vlc telnet 设置
+# vlc播放器内，ctrl+P打开设置
+# 点左下角显示设置/全部
+# 界面/主界面>勾选telnet
+# 界面/主界面/lua>lua telnet/密码（这里必须设一个密码，比如myvlc，不然hass里会报无密码，没试过留空。）
+# vlc telnet 获取进度条可能有问题，无法配合下面的网易云，暂时用不上。
+# - platform: vlc_telnet
+#   name: VLC Player
+#   host: 10.0.0.13
+#   port: 4212
+#   password: myvlc
+
+# 网易云音乐（功能还不太完善，就是网页版，无法登陆个人账号。暂时不用。）
+# - platform: ha_cloud_music
+#   api_url: http://localhost:3000

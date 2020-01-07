@@ -1,0 +1,19 @@
+# tts是文本转语音服务。text to speech
+# 一般是用来把文字转为声音文件，然后发送给播放器，以实现语音播报的效果。
+# 文件会保存在ha根目录的tts目录里，可能需要定期去手动清除一下。
+# mac用户可以直接用系统自带的say命令，更加方便。
+
+# 百度tts
+# - platform: baidu
+#   #app_id，api_key，secret_key从百度云上注册得到
+#   app_id: !secret baidu_tts_app_id
+#   api_key: !secret baidu_tts_api_key
+#   secret_key: !secret baidu_tts_secret_key
+#   #speed：语速0-9（缺省5）
+#   #pitch：语调0-9（缺省5）
+#   #volume：音量0-15（缺省5）
+#   #person：声音（0：女，1：男，3：百度合成，4：百度合成，缺省0）
+#   speed: 5
+#   pitch: 5
+#   volume: 15
+#   person: 0

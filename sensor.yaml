@@ -1,0 +1,90 @@
+# sensor可以用来获取环境状态等。
+# 包括数据服务（天气/比特币价格），和状态检测硬件（报警器/植物检测）等。
+# 更多感应器 Integrations - Home Assistant
+# https://www.home-assistant.io/integrations/#sensor
+
+# Weather prediction
+# - platform: yr
+#   name: Weather
+#   forecast: 24
+#   monitored_conditions:
+#     - temperature    # 温度
+#     - precipitation  # 雨量
+#     - windSpeed      # 风速
+#     - windDirection  # 风向
+#     - pressure       # 气压
+#     - humidity       # 湿度
+
+# AQI 空气质量
+# https://www.home-assistant.io/integrations/waqi/
+# 需要先请求一个token https://aqicn.org/data-platform/token/
+- platform: waqi
+  token: !secret waqi_token
+  locations:
+    - shanghai
+  # stations:
+  #   - us-consulate
+
+# 获取attribute作为记录
+# 不少部件只返回一个状态states，但有很多详情在attribute里。
+# 可是HA无法直接统计attr的数字，所以需要单独提取出来记录一份。
+# https://www.home-assistant.io/integrations/template/
+- platform: template
+  sensors:
+    # darksky_temperature:
+    #   friendly_name: darksky
+    #   unit_of_measurement: '℃'
+    #   value_template: '{{ states.weather.dark_sky.attributes.temperature }}'
+
+    pudong_temperature:
+      friendly_name: pudong
+      unit_of_measurement: '℃'
+      value_template: '{{ states.sensor.waqi_pudong_monitoring_station_shanghai_shang_hai_pu_dong_jian_ce_zhan.attributes.temperature }}'
+
+    us_consulate_temperature:
+      friendly_name: us_consulate
+      unit_of_measurement: '℃'
+      value_template: '{{ states.sensor.waqi_shanghai_us_consulate_shanghai_shang_hai_shang_hai_mei_guo_zong_ling_shi_guan.attributes.temperature }}'
+
+    shanghai_temperature:
+      friendly_name: shanghai
+      unit_of_measurement: '℃'
+      value_template: '{{ states.sensor.waqi_shanghai_shang_hai.attributes.temperature }}'
+
+
+# 统计使用时间
+# https://www.home-assistant.io/integrations/history_stats/
+
+# 剧院模式累计使用时间
+- platform: history_stats
+  name: Theater Mode Time
+  entity_id: switch.theater_mode
+  state: 'on'
+  start: '{{ 0 }}'
+  end: '{{ now() }}'
+
+# 剧院模式每日使用时间
+- platform: history_stats
+  name: Theater Mode Time Daily
+  entity_id: switch.theater_mode
+  state: 'on'
+  start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+  # start: '{{ now().replace(minute=0).replace(second=0) }}'  # hourly
+  end: '{{ now() }}'
+
+# 空调累计使用时间
+- platform: history_stats
+  name: Aircon Time
+  entity_id: switch.aircon_auto
+  state: 'on'
+  start: '{{ 0 }}'
+  end: '{{ now() }}'
+
+# 空调每日使用时间
+- platform: history_stats
+  name: Aircon Time Daily
+  entity_id: switch.aircon_auto
+  state: 'on'
+  start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+  # start: '{{ now().replace(minute=0).replace(second=0) }}'  # hourly
+  end: '{{ now() }}'

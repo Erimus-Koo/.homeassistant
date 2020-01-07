@@ -1,0 +1,88 @@
+# 这个文件记录的是自动化的相关内容。
+# 可以在达到某个条件时，触发一系列的操作。
+
+# 回家时
+# 这里用的一个临时方案。我tracking的方式有两种，iCloud和ping。
+# iCloud只能判断设备的大致范围，而ping在手机休眠时有可能离线。
+# 所以单独用任何一种都无法获得准确的到家时间。
+# 现在先通过iCloud判断是否到了家附近，是的话打开一个标记home_return_fuzzy。
+# 然后通过ping来触发精确的到家时间点。
+# （ping默认间隔12秒，所以到家进门连上设备+被ping到，还是会有一点延迟。）
+# 旧方案是只用iCloud，那就会有点提前。
+
+# 开启即将到家的状态
+- id: home_return_fuzzy  # 这个id没啥卵用 unique就行
+  alias: Home Return Fuzzy  # 这个名称会以下划线替换空格成为id
+  description: 判断即将到家
+  trigger:
+  - entity_id: device_tracker.erimussiphonexr
+    event: enter
+    platform: zone
+    zone: zone.home
+  condition: []
+  action:
+    - service: input_boolean.turn_on  # 状态记录器
+      entity_id: input_boolean.home_return_fuzzy
+
+# 精确的到家时间
+- id: home_return_exact
+  alias: Home Return Exact  # 这个名称会以下划线替换空格成为id
+  description: 回家时开启电器
+  trigger:
+  - entity_id: device_tracker.pingiphonexr
+    platform: state
+    from: 'not_home'
+    to: 'home'
+  condition:
+    condition: state
+    entity_id: input_boolean.home_return_fuzzy
+    state: 'on'
+  action:
+    - service: switch.turn_on  # 开功放
+      entity_id: switch.amplifier_power
+    - service_template: >  # 太阳落山的话开灯
+        {% if is_state('sun.sun','below_horizon') %}switch.turn_on{% endif %}
+      entity_id:
+        - switch.light_2_smart
+        - switch.light_3_smart
+    - service: shell_command.say_welcom_back  # 欢迎问候
+    - service: shell_command.send_volume_up  # wakeup screen
+    - delay: 5
+    - service: shell_command.send_next_track  # 播放（远程电脑上已开启的播放器）
+    - service: input_boolean.turn_off  # 状态记录器
+      entity_id: input_boolean.home_return_fuzzy
+
+# 离家时
+- id: home_leave
+  alias: Home Leave
+  description: 离家时关闭电器
+  trigger:
+  - entity_id: device_tracker.erimussiphonexr
+    event: leave
+    platform: zone
+    zone: zone.home
+  condition: []
+  action:
+    - service: switch.turn_off
+      entity_id:
+        - switch.amplifier_power
+        - switch.water_pump
+        - switch.aircon_power_off
+        - group.light
+    - service: input_boolean.turn_off  # 状态记录器
+      entity_id: input_boolean.home_return_fuzzy
+
+# 监听水泵开启，在15分钟后自动发送一次关闭命令。防止忘记关水泵。
+- id: auto_turn_off_pump
+  alias: Auto turn off pump
+  description: 自动关水泵
+  trigger:
+  - entity_id: switch.water_pump
+    platform: state
+    from: 'off'
+    to: 'on'
+    for: 00:15:00
+  condition: []
+  action:
+  - entity_id: switch.water_pump
+    service: switch.turn_off

@@ -1,0 +1,14 @@
+# say_weather: "say \"现在的温度是{{states('sensor.weather_temperature')}}度。湿度百分之{{states('sensor.weather_humidity')}}。风速{{states('sensor.weather_wind_speed')}}, 气压{{states('sensor.weather_pressure')}}。\""
+
+# say_time: 'say "现在是{{now().hour}}点{{now().minute}}分"'
+
+say_welcom_back: 'say "欢迎回家"'
+
+# 以下是利用我写的另一个服务，在一台远程电脑上接收按键命令并在远程机器运行。
+# 可以通过发送媒体键，来控制远程电脑上的播放器。
+# https://github.com/Erimus-Koo/utility/blob/master/remote_key_service.py
+# send_stop: 'curl -v http://10.0.0.13:8836/send?key=stop'
+send_play_pause: 'curl http://10.0.0.13:8836/send?key=playpause'
+send_previous_track: 'curl http://10.0.0.13:8836/send?key=prevtrack'
+send_next_track: 'curl http://10.0.0.13:8836/send?key=nexttrack'
+send_volume_up: 'curl http://10.0.0.13:8836/send?key=volumeup'  # wakeup screen

@@ -1,0 +1,46 @@
+# 这里控制的是homekit，也就是iOS的home app里出现哪些内容。
+# https://www.home-assistant.io/integrations/homekit/
+
+filter:
+  # include_domains:
+
+  include_entities:  # 要出现的
+    # Amplifier
+    - script.amplifier_volume_up_10_times
+    - script.amplifier_volume_down_10_times
+    - switch.amplifier_mute
+
+    - script.media_play_pause
+    - script.media_previous
+    - script.media_next
+
+    # Air Conditionor
+    - switch.aircon_auto
+
+    # Lights
+    - light.light_1
+    - light.light_2
+    - light.light_3
+
+    # Pump
+    - switch.water_pump
+
+    # Screen
+    # - switch.screen
+
+    # Theater mode
+    # - script.theater_mode_on
+    # - script.theater_mode_off
+    - switch.theater_mode
+
+    # Sensor
+    # 需要在 customize 里设置特定的 device_class 来帮助识别
+    # 但我仍无法让 Siri 直接播报 AQI（iPhone默认可以识别部分国家地区的AQI）
+    - sensor.waqi_pudong_monitoring_station_shanghai_shang_hai_pu_dong_jian_ce_zhan
+
+  # exclude_entities:  # 要排除的
+  #   - remote.broadlink
+
+entity_config:
+  switch.water_pump:  # 显示为水龙头的图标
+    type: valve  # homekit icon (faucet/outlet/shower/sprinkler/valve)

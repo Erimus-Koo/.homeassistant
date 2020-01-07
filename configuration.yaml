@@ -1,0 +1,149 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home 402
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret home_latitude  # 关于!secret开头的部分，请先读readme。
+  longitude: !secret home_longitude
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: !secret home_elevation
+  # metric for Metric, imperial for Imperial
+  unit_system: metric  # 单位（公制）
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Asia/Shanghai  # 时区
+  # Customization file
+  customize: !include customize.yaml  # 关于!include开头的部分，请先读readme。
+
+  auth_providers:
+    - type: trusted_networks
+      trusted_networks:
+        - 10.0.0.20/30
+        - ::1
+      allow_bypass_login: true
+    - type: homeassistant
+
+group: !include groups.yaml  # 分组
+automation: !include automations.yaml  # 自动化
+script: !include scripts.yaml  # 脚本/批处理命令
+switch: !include switch.yaml  # 开关/含博联遥控器命令码
+
+homekit: !include homekit.yaml  # 管理homekit出现的项目
+
+# iOS App 需要的部件
+default_config:
+mobile_app:
+discovery:  # Discover some devices automatically
+ios:  # advanced notifications like actionable notifications and categories
+# cloud:  # securely connecting to your Home Assistant via Nabu Casa
+
+# Show links to resources in log and frontend
+# introduction:
+
+# Enables the frontend
+frontend:
+  themes: !include_dir_merge_named themes  # 主题
+
+# Enables configuration UI
+config:  # 在前端显示配置菜单
+
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+# http:
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+# updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+# conversation:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook:
+
+# Enables a map showing the location of tracked devices
+map:
+
+system_health:
+
+# zone常用来判断到达或离开一个地点
+# https://www.home-assistant.io/integrations/zone/
+zone:
+  - name: Home
+    latitude: !secret home_latitude
+    longitude: !secret home_longitude
+    radius: 100
+    icon: mdi:home
+
+# Track the sun 日出/日落/等
+sun:
+
+# Sensors 感应器
+# https://www.home-assistant.io/integrations/sensor/
+sensor: !include sensor.yaml
+
+# weather:  # 天气预报/用不上就先
+#   - platform: darksky
+#     api_key: !secret darksky_token
+#     mode: daily
+
+# Text to speech
+# tts: !include tts.yaml
+
+# media_player: !include media_player.yaml
+
+# 故名意思 就是命令行
+shell_command: !include shell_command.yaml
+
+# binary_sensor:
+#   - platform: ping
+#     host: 10.0.0.22
+#     count: 2
+#     scan_interval: 10
+
+# https://www.home-assistant.io/integrations/device_tracker/
+device_tracker:  # 设备跟踪器
+  # 使用ping确认手机是否接入局域网
+  # 在known_devices.yaml添加对应设备可以定义名称等细节
+  - platform: ping
+    hosts:
+      pingiphonexr: 10.0.0.22
+      # count: 2  # 发包数
+      # scan_interval: 30
+  # 使用icloud追踪位置
+  # 重启后在网页会提示登陆认证，按要求操作即可。
+  # 成功后会在known_devices.yaml生成icloud包含的设备
+  - platform: icloud
+    username: !secret icloud_username
+    password: !secret icloud_password
+    account_name: Erimus_iCloud
+    # max_interval: 3
+
+remote:  # 遥控器
+  - platform: broadlink
+    host: 10.0.0.30
+    mac: !secret broadlink_mac
+
+input_boolean:
+  theater_mode:  # 用来记录剧场模式的状态
+  aircon:  # 用来记录空调的状态
+  home_return_fuzzy:  # 用来记录iphone是否即将到家
+
+# 这里重复分组只是为了在homekit自动识别为灯泡，否则会识别为开关，要手动改图标。
+# https://www.home-assistant.io/integrations/homekit/
+# 看其中的 Supported Components
+light:
+  - platform: switch
+    name: Light 1
+    entity_id: switch.light_1
+  - platform: switch
+    name: Light 2
+    entity_id: switch.light_2
+  - platform: switch
+    name: Light 3
+    entity_id: switch.light_3

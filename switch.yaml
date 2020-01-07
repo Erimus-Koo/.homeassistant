@@ -1,0 +1,200 @@
+# 开关
+
+# 关于博联万能遥控学习射频码的方式，iOS用户可以参考我写的另一个小工具。
+# https://github.com/Erimus-Koo/Extract_BroadLink_learned_codes_from_iOS_App
+# 非iOS用户，可以参考下官方文档。
+# https://www.home-assistant.io/integrations/broadlink/
+# 我在这里控制了大部分的传统家电和开关。
+- platform: broadlink
+  host: 10.0.0.30
+  mac: !secret broadlink_mac
+  timeout: 15
+  switches:
+    # amplifier ==============================
+    amplifier_power:
+      friendly_name: Amplifier Power
+      command_on: JgBYAAABKpIVERQ1FTUVNhU1FTUVNRURFDUVERQSFBEUERQRFBIUNhQRFDYUERQ2FBIUNRURFBEUNRUSEzYVERQ2FBEUNRU1FQAFHgABKkgVAAxeAAEqSBUADQU=
+      command_off: JgBYAAABKpIVERQ1FTUVNhU1FTUVNRURFDUVERQSFBEUERQRFBIUNhQRFDYUERQ2FBIUNRURFBEUNRUSEzYVERQ2FBEUNRU1FQAFHgABKkgVAAxeAAEqSBUADQU=
+      # 这类遥控器虽然开关是同一个键，但还是要写on和off。
+      # 简化方案是可以把off写成''，但在调用的时候，也只能对应用switch.trun_on。
+      # 但是如果投射到homekit，它会区分开关状态并调用trunoff，所以只能复制一遍。
+
+    amplifier_mute:
+      friendly_name: Amplifier Mute
+      command_on: JgBQAAABJ5QSEhI3EhISNxI3EjcSNxISEjcSEhI3EhISEhISEhISNxISEhISNxI3EjcSEhISEhISNxI3EhISEhISEjcSNxI3EgAFJQABJ0oSAAxS
+      command_off: JgBQAAABJ5QSEhI3EhISNxI3EjcSNxISEjcSEhI3EhISEhISEhISNxISEhISNxI3EjcSEhISEhISNxI3EhISEhISEjcSNxI3EgAFJQABJ0oSAAxS
+
+    amplifier_volume_up:
+      friendly_name: Amplifier Vol +
+      command_on: JgBQAAABJ5QSEhI3EhISNxI3EjcSNxISEjcSEhI3EhISEhISEhISNxISEjcSEhI3EjcSEhISEhISNxISEjcSEhISEjcSNxI3EgAFJQABJ0oSAAxS
+      command_off: ''
+
+    amplifier_volume_down:
+      friendly_name: Amplifier Vol -
+      command_on: JgBQAAABJ5QSEhI3EhISNxI3EjcSNxISEjcSEhI3EhISEhISEhISNxI3EjcSEhI3EjcSEhISEhISEhISEjcSEhISEjcSNxI3EgAFJQABJ0oSAAxS
+      command_off: ''
+
+    # projector ==============================
+    projector_power:
+      friendly_name: Projector
+      command_on: JgBUAAABFocUEBIQExASEBMxFDETMxIyE4gTMhMQExASEBMQEhATMRQQEgADtQABFYgTEBIREhATEBIyEzEUMRQxE4gUMhIREhASERIQExASMhMQEwANBQAAAAA=
+      command_off: JgBUAAABFYgTDxQPEw8UDxMyEzITMRQxFIcUDxMyEw8UDxMQEw8TMhMPFAADtAABFYgTEBMPExASEBQxEzITMhMyE4gTDxQxExATDxQPEw8UMRMQEwANBQAAAAA=
+
+    # air conditioner ==============================
+    aircon_heat_30:
+      friendly_name: Aircon Heating 30℃
+      command_on: JgAWAnI2DycPDQ8NDw0PDQ8NDw0PDQ8NDw0PDQ8NDycPDQ8NDw0PDQ8NDw0PDQ8NDw0PDQ8NDw0PDQ8NDw0PDQ8NDycPDQ8nDycPJw8nDycPJw8NDycPJw8nDycPJw8nDycPJw8nDw0PDQ8NDw0PDQ8NDw0PDQ8NDw0PJw8nDw0PDQ8nDycPJw8nDw0PDQ8nDycPDQ8NDw0PJw8NDw0PJw8NDw0PJw8nDw0PJw8nDw0PJw8nDw0PJw8nDw0PDQ8nDw0PDQ8NDw0PDQ8nDycPDQ8nDycPJw8NDw0PDQ8nDycPJw8nDw0PJw8nDycPDQ8NDw0PDQ8nDw0PDQ8NDw0PDQ8NDw0PDQ8nDycPJw8nDycPJw8nDycPDQ8NDw0PDQ8NDw0PDQ8NDycPJw8nDycPJw8nDycPJw8NDw0PDQ8NDw0PDQ8NDw0PJw8nDycPJw8nDycPJw8nDw0PDQ8NDw0PDQ8NDw0PDQ8nDycPJw8nDycPJw8nDycPDQ8NDw0PDQ8NDw0PDQ8NDycPJw8nDycPJw8nDycPJw8NDycPJw8NDycPDQ8nDw0PJw8NDw0PJw8NDycPDQ8nDycPDQ8NDw0PJw8NDycPJw8NDycPJw8nDw0PJw8NDw0PDQ8NDw0PDQ8NDw0PDQ8NDycPJw8nDycPJw8nDycPJw8NDw0PDQ8NDw0PDQ8NDw0PJw8nDycPJw8nDycPJw8nEgABSA==
+      command_off: ''
+
+    aircon_cool_28:
+      friendly_name: Aircon Cooling 28℃
+      command_on: JgAWAnI2DycPDQ8NDw0PDQ8NDw0PDQ8NDw0PDQ8NDycPDQ8NDw0PDQ8NDw0PDQ8NDw0PDQ8NDw0PDQ8NDw0PDQ8NDycPDQ8nDycPJw8nDycPJw8NDycPJw8nDycPJw8nDycPJw8nDw0PDQ8NDw0PDQ8NDw0PDQ8NDw0PJw8nDw0PDQ8nDycPJw8nDw0PDQ8nDycPDQ8NDw0PJw8NDw0PJw8NDw0PJw8nDw0PJw8nDw0PJw8nDw0PJw8nDw0PDQ8nDw0PDQ8NDw0PDQ8nDycPDQ8nDycPJw8NDw0PDQ8NDycPJw8nDw0PJw8nDycPJw8NDw0PDQ8nDw0PDQ8NDw0PDQ8NDw0PDQ8nDycPJw8nDycPJw8nDycPDQ8NDw0PDQ8NDw0PDQ8NDycPJw8nDycPJw8nDycPJw8NDw0PDQ8NDw0PDQ8NDw0PJw8nDycPJw8nDycPJw8nDw0PDQ8NDw0PDQ8NDw0PDQ8nDycPJw8nDycPJw8nDycPDQ8NDw0PDQ8NDw0PDQ8NDycPJw8nDycPJw8nDycPJw8nDycPDQ8NDycPDQ8nDw0PDQ8NDycPJw8NDycPDQ8nDycPDQ8NDw0PJw8NDycPJw8NDycPJw8nDw0PJw8NDw0PDQ8NDw0PDQ8NDw0PDQ8NDycPJw8nDycPJw8nDycPJw8NDw0PDQ8NDw0PDQ8NDw0PJw8nDycPJw8nDycPJw8nEgABSA==
+      command_off: ''
+
+    aircon_power_off:
+      friendly_name: Aircon Power OFF
+      command_on: ''
+      command_off: JgAWAnI2DycPDQ8NDw0PDQ8NDw0PDQ8NDw0PDQ8NDycPDQ8NDw0PDQ8NDw0PDQ8NDw0PDQ8NDw0PDQ8NDw0PDQ8NDycPDQ8nDycPJw8nDycPJw8NDycPJw8nDycPJw8nDycPJw8nDw0PDQ8NDw0PDQ8NDw0PDQ8NDw0PJw8nDw0PDQ8nDycPJw8nDw0PDQ8nDycPDQ8NDw0PJw8NDw0PJw8NDw0PJw8nDw0PJw8nDw0PJw8nDw0PJw8nDw0PDQ8nDw0PDQ8NDw0PDQ8nDycPDQ8nDycPJw8NDw0PJw8NDw0PDQ8NDw0PJw8nDw0PJw8nDycPJw8nDw0PDQ8NDw0PDQ8NDw0PDQ8nDycPJw8nDycPJw8nDycPDQ8NDw0PDQ8NDw0PDQ8NDycPJw8nDycPJw8nDycPJw8NDw0PDQ8NDw0PDQ8NDw0PJw8nDycPJw8nDycPJw8nDw0PDQ8NDw0PDQ8NDw0PDQ8nDycPJw8nDycPJw8nDycPDQ8NDw0PDQ8NDw0PDQ8NDycPJw8nDycPJw8nDycPJw8nDycPJw8NDycPDQ8nDw0PDQ8NDw0PJw8NDycPDQ8nDycPDQ8NDw0PDQ8NDycPJw8NDycPJw8nDycPJw8NDw0PDQ8NDw0PDQ8NDw0PDQ8NDycPJw8nDycPJw8nDycPJw8NDw0PDQ8NDw0PDQ8NDw0PJw8nDycPJw8nDycPJw8nEgABSA==
+
+    # RF Lights ==============================
+    light:  # 空开关
+      friendly_name: Fake Light
+      command_on: ''
+      command_off: ''
+
+    light_1:
+      friendly_name: Light 1
+      command_on: eQAYAQgXCRYJFwgXCBcZBwgXCBcJFgoWGAcYBxkGGQcJFhgHCRcJFgkWCRYKFgkWGAcZBwjyCRYJFwgXCRYJFhkHCRYJFgkWCRcYBxkGGQcYBwkWGQcJFgkWCRcIFwkWCRYZBxgHCfEJFwkWCRYJFwgXGAcJFwgXCBcJFhkHGAcYCBgHCBcYBwkWCRcJFgkWCRcJFhgHGQcI8gkWCRYJFwgXCRYZBwgXCRcIFwgXGAcZBxgHGAcJFhkHCRYJFgkXCBcJFgkWGQcYBwnxCRcJFgkWCRcIFxkGCRcIFwkWCRYZBxgHGQcYBwkWGAcJFwkWCRYJFwgXCBcZBxgHCfEJFgkXCBcJFgkXGAcJFgkXCBcJFhgIGAcYBxgABdw=
+      command_off: eQAYAQgXCRYJFwgXCBcZBwgXCBcJFgoWGAcYBxkGGQcJFhgHCRcJFgkWCRYKFgkWGAcZBwjyCRYJFwgXCRYJFhkHCRYJFgkWCRcYBxkGGQcYBwkWGQcJFgkWCRcIFwkWCRYZBxgHCfEJFwkWCRYJFwgXGAcJFwgXCBcJFhkHGAcYCBgHCBcYBwkWCRcJFgkWCRcJFhgHGQcI8gkWCRYJFwgXCRYZBwgXCRcIFwgXGAcZBxgHGAcJFhkHCRYJFgkXCBcJFgkWGQcYBwnxCRcJFgkWCRcIFxkGCRcIFwkWCRYZBxgHGQcYBwkWGAcJFwkWCRYJFwgXCBcZBxgHCfEJFgkXCBcJFgkXGAcJFgkXCBcJFhgIGAcYBxgABdw=
+
+    light_2:
+      friendly_name: Light 2
+      command_on: egYyAAoXCRcKFwkXCRcKFwryChcKFwkXChcKFxkHCRcJFwoXChcZCBkIGQcZBwkXGQcZBxkHAAAAAAAA
+      command_off: egYyAAoXCRcKFwkXCRcKFwryChcKFwkXChcKFxkHCRcJFwoXChcZCBkIGQcZBwkXGQcZBxkHAAAAAAAA
+
+    light_3:
+      friendly_name: Light 3
+      command_on: egAQAQkWCRcIFwkWCRYZBgkXCBcJFgkWGQcYBxgHGAcJFhkGCRcIFxgHGQYJFwgXCRYJFgnxCRYJFwgXCRYJFhkGCRcIFwkWCRYZBhkHGAcYBwkWGQcIFwgXGAcZBgkXCBcJFgkWCfEJFwgWChYJFgkWGQYJFwkWCRYJFxgHGAcYBxkGCRYZBwkWCRYZBhkGCRcJFgkWCRYJ8ggXCBcJFgkWCRcYBwkWCRYJFgkXGAcYBxkGGQcIFxgHCRYJFhkHGAcIFwkWCRcJFgnxCBcJFgkXCBcJFhgHCRYKFggXCRYYBxgHGQcYBwkWGQYJFwgXGAcZBgkXCBcJFgkWCfEJFwgXCRYJFgkWGQcIFwkWCRYJAAXcAAAAAAAAAAA=
+      command_off: egAQAQkWCRcIFwkWCRYZBgkXCBcJFgkWGQcYBxgHGAcJFhkGCRcIFxgHGQYJFwgXCRYJFgnxCRYJFwgXCRYJFhkGCRcIFwkWCRYZBhkHGAcYBwkWGQcIFwgXGAcZBgkXCBcJFgkWCfEJFwgWChYJFgkWGQYJFwkWCRYJFxgHGAcYBxkGCRYZBwkWCRYZBhkGCRcJFgkWCRYJ8ggXCBcJFgkWCRcYBwkWCRYJFgkXGAcYBxkGGQcIFxgHCRYJFhkHGAcIFwkWCRcJFgnxCBcJFgkXCBcJFhgHCRYKFggXCRYYBxgHGQcYBwkWGQYJFwgXGAcZBgkXCBcJFgkWCfEJFwgXCRYJFgkWGQcIFwkWCRYJAAXcAAAAAAAAAAA=
+
+    light_all:
+      friendly_name: Light All
+      command_on: egC0AAkWCRYKFQkXCRYZBgkXCBcJFggXGQYZBxgGGQcJFhkHCRYIFwkWChYYBhkHCRUJFwnxCRYKFggXCRYIGBcHChYJFggXCRYZBxgHGAcZBgoVGQcJFggXCRYJFxkGGAcJFgkWCvAJFwkWCBcJFwkWGAcIGAgWCRcJFhkHFwcZBxgHCBcYBwkWCRcJFQoWGQcYBgoWCBcJ8QkWCRYKFgkWCRYZBgoWCBcJFgkXGAYZBxkGGAAF3AAAAAA=
+      command_off: egC0AAkWCRYKFQkXCRYZBgkXCBcJFggXGQYZBxgGGQcJFhkHCRYIFwkWChYYBhkHCRUJFwnxCRYKFggXCRYIGBcHChYJFggXCRYZBxgHGAcZBgoVGQcJFggXCRYJFxkGGAcJFgkWCvAJFwkWCBcJFwkWGAcIGAgWCRcJFhkHFwcZBxgHCBcYBwkWCRcJFQoWGQcYBgoWCBcJ8QkWCRYKFgkWCRYZBgoWCBcJFgkXGAYZBxkGGAAF3AAAAAA=
+
+    # RF Pump ==============================
+    water_pump:
+      friendly_name: Pump
+      command_on: sgc0AAoaChoLGhwJHAkKAAENHAgcCAoaCxoLGhwIHAgcCBwIChocCBwIHAgcCAoaHAgcCAoaCxkAAAAA
+      command_off: shA0ABwIHAkKGhwIHAgcCBwIChocCRwJChoLGgsaChoKGgoaHAgLAAEPHAgcCAoaChoKGhwIHAgAAAAA
+
+    # RF Screen ==============================
+    screen:
+      friendly_name: Screen
+      command_on: eB0yAAgSCBIVBhUGFAYIEhUGFQYIEhUGCBMIEgnAFQYVBhQGCBIVBQgSFQYIEgkSFQYVBRUFAAAAAAAA
+      command_off: eBYyABUGFQYUBggSFAYIEhUGCRIIEhUGFAYVBgkSCBIVBhUGFAYIEhUGFAYIEggSFQYIEgnAAAAAAAAA
+
+    screen_pause:
+      friendly_name: Screen Pause
+      command_on: eAwyABUGFQUVBggSFQUIExUGCBIIEhUGFQYVBggTCBIVBhUGFAYIEhUGFQYVBggSCBIIEgjAAAAAAAAA
+      command_off: eAwyABUGFQUVBggSFQUIExUGCBIIEhUGFQYVBggTCBIVBhUGFAYIEhUGFQYVBggSCBIIEgjAAAAAAAAA
+
+
+# fake switches ==============================
+# 下面是一些【假的】开关，可以赋予开关一些条件判断。
+# https://www.home-assistant.io/integrations/switch.template/
+- platform: template
+  switches:
+    # 剧院模式 ==============================
+    # 这里是把两组script组合成为一个开关，这样在前端调用时就比较简洁。
+    # 这里面的input_boolean相当于一个状态记录器，写在configration里。
+    # 关于这部分可以参考我的一个提问，和网友的解答。
+    # https://community.home-assistant.io/t/make-scripts-as-toggle-switch
+    theater_mode:
+      friendly_name: Theater Mode
+      icon_template: mdi:movie-open
+      value_template: "{{ is_state('input_boolean.theater_mode', 'on') }}"
+      turn_on:
+        - service: script.theater_mode_on
+      turn_off:
+        - service: script.theater_mode_off
+      # 这里也可以考虑把命令罗列出来，但剥离为script，会让这个按钮本身简洁易读。
+
+    # 空调根据温度开启 ==============================
+    # 这里是根据当前温度，判断空调开启是制冷还是制热。
+    # 其中温度数据来自sensor.pudong_temperature
+    # 空调的红外命令是一个组合数据，通过各个位置控制模式/温度/风力/等等，比较复杂。没找到现成的组合命令的轮子，就直接记录了两个状态的完整命令。
+    aircon_auto:
+      friendly_name: Aircon
+      icon_template: mdi:fan
+      value_template: "{{ is_state('input_boolean.aircon', 'on') }}"
+      turn_on:
+        - service: input_boolean.turn_on
+          entity_id: input_boolean.aircon  # recorder
+        - service: switch.turn_on
+          data_template:
+            entity_id: >
+              {% if states('sensor.pudong_temperature') | float < 15 %}
+                switch.aircon_heat_30
+              {% elif states('sensor.pudong_temperature') | float > 25 %}
+                switch.aircon_cool_28
+              {% endif %}
+      turn_off:
+        - service: input_boolean.turn_off
+          entity_id: input_boolean.aircon  # recoder
+        - service: switch.turn_off
+          entity_id:
+            - switch.aircon_power_off
+            # 如果在这里增加关闭制冷和制热那两个独立switch的状态，可能因为同时发出命令太多，会导致关闭失败。所以就不管那两个了。
+
+    # 根据灯的状态决定是否开关 ==============================
+    # 因为我的灯是开关为同一个键的射频接收器，所以开关命令是一样的。
+    # 开的状态下再发送一次开，会导致关灯。vice versa
+    # 所以增加一组智能开关。让它关灯时不再发送命令导致开灯，反之亦然。
+    # 这里switch.turn_on等命令如果作用在不存在的实体上，好像会导致错误，所以还造了一个假的开关switch.light，发送的是空命令。
+    # 同时为了代码剥离，还是保留了原switch。
+    # 而且偶尔射频发射失败，原switch便于在不改变状态的情况下发送指令。
+    light_1_smart:
+      friendly_name: Light 1 smart
+      icon_template: mdi:wall-sconce-flat
+      value_template: "{{ states('switch.light_1') }}"
+      turn_on:
+        service: switch.turn_on
+        data_template:
+          entity_id: >
+            switch.light{% if is_state('switch.light_1', 'off') %}_1{% endif %}
+      turn_off:
+        service: switch.turn_off
+        data_template:
+          entity_id: >
+            switch.light{% if is_state('switch.light_1', 'on') %}_1{% endif %}
+
+    light_2_smart:
+      friendly_name: Light 2 smart
+      icon_template: mdi:ceiling-light
+      value_template: "{{ states('switch.light_2') }}"
+      turn_on:
+        service: switch.turn_on
+        data_template:
+          entity_id: >
+            switch.light{% if is_state('switch.light_2', 'off') %}_2{% endif %}
+      turn_off:
+        service: switch.turn_off
+        data_template:
+          entity_id: >
+            switch.light{% if is_state('switch.light_2', 'on') %}_2{% endif %}
+
+    light_3_smart:
+      friendly_name: Light 3 smart
+      icon_template: mdi:track-light
+      value_template: "{{ states('switch.light_3') }}"
+      turn_on:
+        service: switch.turn_on
+        data_template:
+          entity_id: >
+            switch.light{% if is_state('switch.light_3', 'off') %}_3{% endif %}
+      turn_off:
+        service: switch.turn_off
+        data_template:
+          entity_id: >
+            switch.light{% if is_state('switch.light_3', 'on') %}_3{% endif %}
