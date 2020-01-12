@@ -75,7 +75,7 @@
 # 空调累计使用时间
 - platform: history_stats
   name: Aircon Time
-  entity_id: switch.aircon_auto
+  entity_id: switch.aircon_smart
   state: 'on'
   start: '{{ 0 }}'
   end: '{{ now() }}'
@@ -83,7 +83,7 @@
 # 空调每日使用时间
 - platform: history_stats
   name: Aircon Time Daily
-  entity_id: switch.aircon_auto
+  entity_id: switch.aircon_smart
   state: 'on'
   start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
   # start: '{{ now().replace(minute=0).replace(second=0) }}'  # hourly

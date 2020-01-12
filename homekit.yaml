@@ -15,7 +15,7 @@ filter:
     - script.media_next
 
     # Air Conditionor
-    - switch.aircon_auto
+    - switch.aircon_smart
 
     # Lights
     - light.light_1
@@ -37,6 +37,9 @@ filter:
     # 需要在 customize 里设置特定的 device_class 来帮助识别
     # 但我仍无法让 Siri 直接播报 AQI（iPhone默认可以识别部分国家地区的AQI）
     - sensor.waqi_pudong_monitoring_station_shanghai_shang_hai_pu_dong_jian_ce_zhan
+
+    # Climate
+    - climate.hitachi_ac
 
   # exclude_entities:  # 要排除的
   #   - remote.broadlink

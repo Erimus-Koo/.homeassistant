@@ -160,7 +160,7 @@
                                             "type": "entity-button"
                                         },
                                         {
-                                            "entity": "switch.aircon_auto",
+                                            "entity": "switch.aircon_smart",
                                             "icon_height": "88px",
                                             "show_name": false,
                                             "type": "entity-button"
@@ -178,119 +178,137 @@
                             "type": "vertical-stack"
                         },
                         {
-                            "cards": [
+                            "card": {
+                                "entity": "climate.hitachi_ac",
+                                "type": "thermostat"
+                            },
+                            "conditions": [
                                 {
-                                    "entities": [
-                                        {
-                                            "entity": "sensor.waqi_pudong_monitoring_station_shanghai_shang_hai_pu_dong_jian_ce_zhan",
-                                            "name": "PD"
-                                        },
-                                        {
-                                            "entity": "sensor.waqi_shanghai_us_consulate_shanghai_shang_hai_shang_hai_mei_guo_zong_ling_shi_guan",
-                                            "name": "US"
-                                        },
-                                        {
-                                            "entity": "sensor.waqi_shanghai_shang_hai",
-                                            "name": "SH"
-                                        }
-                                    ],
-                                    "font_size": 75,
-                                    "hours_to_show": 48,
-                                    "icon": "mdi:skull",
-                                    "line_width": 4,
-                                    "name": "Shanghai AQI",
-                                    "show": {
-                                        "fill": false,
-                                        "icon": false,
-                                        "legend": false,
-                                        "name": false
-                                    },
-                                    "type": "custom:mini-graph-card"
-                                },
-                                {
-                                    "entities": [
-                                        {
-                                            "entity": "sensor.pudong_temperature",
-                                            "name": "PD"
-                                        },
-                                        {
-                                            "entity": "sensor.us_consulate_temperature",
-                                            "name": "US"
-                                        },
-                                        {
-                                            "entity": "sensor.shanghai_temperature",
-                                            "name": "SH"
-                                        }
-                                    ],
-                                    "font_size": 75,
-                                    "hours_to_show": 48,
-                                    "icon": "mdi:thermometer",
-                                    "line_width": 4,
-                                    "name": "Last 3d Temp",
-                                    "show": {
-                                        "fill": false,
-                                        "icon": false,
-                                        "legend": false,
-                                        "name": false
-                                    },
-                                    "type": "custom:mini-graph-card"
+                                    "entity": "switch.aircon_smart",
+                                    "state": "on"
                                 }
                             ],
-                            "type": "horizontal-stack"
+                            "type": "conditional"
                         },
                         {
                             "cards": [
                                 {
-                                    "aggregate_func": "max",
-                                    "entities": [
+                                    "cards": [
                                         {
-                                            "entity": "sensor.theater_mode_time",
-                                            "show_graph": false
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.waqi_pudong_monitoring_station_shanghai_shang_hai_pu_dong_jian_ce_zhan",
+                                                    "name": "PD"
+                                                },
+                                                {
+                                                    "entity": "sensor.waqi_shanghai_us_consulate_shanghai_shang_hai_shang_hai_mei_guo_zong_ling_shi_guan",
+                                                    "name": "US"
+                                                },
+                                                {
+                                                    "entity": "sensor.waqi_shanghai_shang_hai",
+                                                    "name": "SH"
+                                                }
+                                            ],
+                                            "font_size": 75,
+                                            "hours_to_show": 48,
+                                            "icon": "mdi:skull",
+                                            "line_width": 4,
+                                            "name": "Shanghai AQI",
+                                            "show": {
+                                                "fill": false,
+                                                "icon": false,
+                                                "legend": false,
+                                                "name": false
+                                            },
+                                            "type": "custom:mini-graph-card"
                                         },
                                         {
-                                            "entity": "sensor.theater_mode_time_daily"
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.pudong_temperature",
+                                                    "name": "PD"
+                                                },
+                                                {
+                                                    "entity": "sensor.us_consulate_temperature",
+                                                    "name": "US"
+                                                },
+                                                {
+                                                    "entity": "sensor.shanghai_temperature",
+                                                    "name": "SH"
+                                                }
+                                            ],
+                                            "font_size": 75,
+                                            "hours_to_show": 48,
+                                            "icon": "mdi:thermometer",
+                                            "line_width": 4,
+                                            "name": "Last 3d Temp",
+                                            "show": {
+                                                "fill": false,
+                                                "icon": false,
+                                                "legend": false,
+                                                "name": false
+                                            },
+                                            "type": "custom:mini-graph-card"
                                         }
                                     ],
-                                    "font_size": 75,
-                                    "group_by": "date",
-                                    "hours_to_show": 168,
-                                    "icon": "mdi:movie-open",
-                                    "refresh_interval": 0,
-                                    "show": {
-                                        "graph": "bar",
-                                        "icon": false,
-                                        "name": false
-                                    },
-                                    "type": "custom:mini-graph-card",
-                                    "unit": "h Theater"
+                                    "type": "horizontal-stack"
                                 },
                                 {
-                                    "aggregate_func": "max",
-                                    "entities": [
+                                    "cards": [
                                         {
-                                            "entity": "sensor.aircon_time",
-                                            "show_graph": false
+                                            "aggregate_func": "max",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.theater_mode_time",
+                                                    "show_graph": false
+                                                },
+                                                {
+                                                    "entity": "sensor.theater_mode_time_daily"
+                                                }
+                                            ],
+                                            "font_size": 75,
+                                            "group_by": "date",
+                                            "hours_to_show": 168,
+                                            "icon": "mdi:movie-open",
+                                            "refresh_interval": 0,
+                                            "show": {
+                                                "graph": "bar",
+                                                "icon": false,
+                                                "name": false
+                                            },
+                                            "type": "custom:mini-graph-card",
+                                            "unit": "h Theater"
                                         },
                                         {
-                                            "color": "#e74c3c",
-                                            "entity": "sensor.aircon_time_daily"
+                                            "aggregate_func": "max",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.aircon_time",
+                                                    "show_graph": false
+                                                },
+                                                {
+                                                    "color": "#e74c3c",
+                                                    "entity": "sensor.aircon_time_daily"
+                                                }
+                                            ],
+                                            "font_size": 75,
+                                            "group_by": "date",
+                                            "hours_to_show": 168,
+                                            "icon": "mdi:fan",
+                                            "refresh_interval": 0,
+                                            "show": {
+                                                "graph": "bar",
+                                                "icon": false,
+                                                "name": false
+                                            },
+                                            "type": "custom:mini-graph-card",
+                                            "unit": "h Aircon"
                                         }
                                     ],
-                                    "font_size": 75,
-                                    "group_by": "date",
-                                    "hours_to_show": 168,
-                                    "icon": "mdi:fan",
-                                    "refresh_interval": 0,
-                                    "show": {
-                                        "graph": "bar",
-                                        "icon": false,
-                                        "name": false
-                                    },
-                                    "type": "custom:mini-graph-card",
-                                    "unit": "h Aircon"
+                                    "type": "horizontal-stack"
                                 }
                             ],
-                            "type": "horizontal-stack"
+                            "type": "vertical-stack"
                         }
                     ],
                     "icon": "mdi:home",

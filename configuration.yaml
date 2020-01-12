@@ -12,6 +12,7 @@ homeassistant:
   time_zone: Asia/Shanghai  # 时区
   # Customization file
   customize: !include customize.yaml  # 关于!include开头的部分，请先读readme。
+# https://www.home-assistant.io/docs/configuration/splitting_configuration/
 
   auth_providers:
     - type: trusted_networks
@@ -24,7 +25,7 @@ homeassistant:
 group: !include groups.yaml  # 分组
 automation: !include automations.yaml  # 自动化
 script: !include scripts.yaml  # 脚本/批处理命令
-switch: !include switch.yaml  # 开关/含博联遥控器命令码
+switch: !include_dir_merge_list switches  # 开关/含博联遥控器命令码
 
 homekit: !include homekit.yaml  # 管理homekit出现的项目
 
@@ -97,7 +98,7 @@ sensor: !include sensor.yaml
 
 # media_player: !include media_player.yaml
 
-# 故名意思 就是命令行
+# 顾名思义 就是命令行
 shell_command: !include shell_command.yaml
 
 # binary_sensor:
@@ -129,11 +130,23 @@ remote:  # 遥控器
     host: 10.0.0.30
     mac: !secret broadlink_mac
 
+smartir:  # 博联空调面板插件
+climate:  # https://github.com/smartHomeHub/SmartIR/blob/master/docs/CLIMATE.md
+  - platform: smartir
+    name: Aircon Hitachi
+    unique_id: hitachi_ac
+    device_code: 1084  # 设备码 见上方链接
+    controller_data: 10.0.0.30
+    # temperature_sensor: sensor.temperature
+    # humidity_sensor: sensor.humidity
+    power_sensor: input_boolean.aircon
+
+# ================================================== 状态记录器
 input_boolean:
   theater_mode:  # 用来记录剧场模式的状态
-  aircon:  # 用来记录空调的状态
   home_return_fuzzy:  # 用来记录iphone是否即将到家
 
+# ================================================== HomeKit适配
 # 这里重复分组只是为了在homekit自动识别为灯泡，否则会识别为开关，要手动改图标。
 # https://www.home-assistant.io/integrations/homekit/
 # 看其中的 Supported Components
