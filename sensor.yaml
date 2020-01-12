@@ -51,6 +51,11 @@
       unit_of_measurement: '℃'
       value_template: '{{ states.sensor.waqi_shanghai_shang_hai.attributes.temperature }}'
 
+    aircon_temperature:
+      friendly_name: aircon temperature
+      unit_of_measurement: '℃'
+      value_template: '{{ states.climate.hitachi_ac.attributes.temperature }}'
+
 
 # 统计使用时间
 # https://www.home-assistant.io/integrations/history_stats/
