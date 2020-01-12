@@ -1,0 +1,102 @@
+# fake switches ==============================
+# 下面是一些【假的】开关，可以赋予开关一些条件判断。
+# https://www.home-assistant.io/integrations/switch.template/
+- platform: template
+  switches:
+    # 剧院模式 ==============================
+    # 这里是把两组script组合成为一个开关，这样在前端调用时就比较简洁。
+    # 这里面的input_boolean相当于一个状态记录器，写在configration里。
+    # 关于这部分可以参考我的一个提问，和网友的解答。
+    # https://community.home-assistant.io/t/make-scripts-as-toggle-switch
+    theater_mode:
+      friendly_name: Theater Mode
+      icon_template: mdi:movie-open
+      value_template: "{{ is_state('input_boolean.theater_mode', 'on') }}"
+      turn_on:
+        - service: script.theater_mode_on
+      turn_off:
+        - service: script.theater_mode_off
+      # 这里也可以考虑把命令罗列出来，但剥离为script，会让这个按钮本身简洁易读。
+
+    # 空调根据温度开启 ==============================
+    # 这里是根据当前温度，判断空调开启是制冷还是制热。
+    # 其中温度数据来自sensor.pudong_temperature
+    aircon_smart:
+      friendly_name: Aircon
+      icon_template: mdi:thermostat
+      value_template: "{{ states('climate.hitachi_ac') != 'off' }}"
+      turn_on:
+        - service: climate.set_temperature
+          entity_id: climate.hitachi_ac
+          data_template:
+            temperature: >
+              {% if states('sensor.pudong_temperature') | float < 15 %}
+                30
+              {% elif states('sensor.pudong_temperature') | float > 25 %}
+                27
+              {% else %}
+                25
+              {% endif %}
+            hvac_mode: >
+              {% if states('sensor.pudong_temperature') | float < 15 %}
+                heat
+              {% elif states('sensor.pudong_temperature') | float > 25 %}
+                cool
+              {% else %}
+                fan_only
+              {% endif %}
+      turn_off:
+        - service: climate.turn_off
+          entity_id: climate.hitachi_ac
+
+    # 根据灯的状态决定是否开关 ==============================
+    # 因为我的灯是开关为同一个键的射频接收器，所以开关命令是一样的。
+    # 开的状态下再发送一次开，会导致关灯。vice versa
+    # 所以增加一组智能开关。让它关灯时不再发送命令导致开灯，反之亦然。
+    # 这里switch.turn_on等命令如果作用在不存在的实体上，好像会导致错误，所以还造了一个假的开关switch.light，发送的是空命令。
+    # 同时为了代码剥离，还是保留了原switch。
+    # 而且偶尔射频发射失败，原switch便于在不改变状态的情况下发送指令。
+    light_1_smart:
+      friendly_name: Light 1 smart
+      icon_template: mdi:wall-sconce-flat
+      value_template: "{{ states('switch.light_1') }}"
+      turn_on:
+        service: switch.turn_on
+        data_template:
+          entity_id: >
+            switch.light{% if is_state('switch.light_1', 'off') %}_1{% endif %}
+      turn_off:
+        service: switch.turn_off
+        data_template:
+          entity_id: >
+            switch.light{% if is_state('switch.light_1', 'on') %}_1{% endif %}
+
+    light_2_smart:
+      friendly_name: Light 2 smart
+      icon_template: mdi:ceiling-light
+      value_template: "{{ states('switch.light_2') }}"
+      turn_on:
+        service: switch.turn_on
+        data_template:
+          entity_id: >
+            switch.light{% if is_state('switch.light_2', 'off') %}_2{% endif %}
+      turn_off:
+        service: switch.turn_off
+        data_template:
+          entity_id: >
+            switch.light{% if is_state('switch.light_2', 'on') %}_2{% endif %}
+
+    light_3_smart:
+      friendly_name: Light 3 smart
+      icon_template: mdi:track-light
+      value_template: "{{ states('switch.light_3') }}"
+      turn_on:
+        service: switch.turn_on
+        data_template:
+          entity_id: >
+            switch.light{% if is_state('switch.light_3', 'off') %}_3{% endif %}
+      turn_off:
+        service: switch.turn_off
+        data_template:
+          entity_id: >
+            switch.light{% if is_state('switch.light_3', 'on') %}_3{% endif %}
