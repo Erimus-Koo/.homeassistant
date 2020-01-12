@@ -61,7 +61,10 @@
     event: leave
     platform: zone
     zone: zone.home
-  condition: []
+  condition:  # 防止iCloud偶尔抽风误触 加一个ping判断
+    condition: state
+    entity_id: device_tracker.pingiphonexr
+    state: 'not_home'
   action:
     - service: switch.turn_off
       entity_id:

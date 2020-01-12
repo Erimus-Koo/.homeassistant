@@ -94,7 +94,7 @@ theater_mode_on:
       entity_id: switch.projector_power
     - service: switch.turn_on
       entity_id: switch.projector_power
-    - delay: 00:00:10
+    - delay: 00:00:15
     # 关灯
     - service: switch.turn_off
       entity_id: group.light
@@ -105,6 +105,11 @@ theater_mode_off:
     # 状态记录器
     - service: input_boolean.turn_off
       entity_id: input_boolean.theater_mode
+    # 开灯 天亮的话就不开
+    - service: switch.turn_on
+      data_template:
+        entity_id: >
+          switch.light{% if is_state('sun.sun','below_horizon') %}_2_smart{% endif %}
     # 收起幕布 不灵敏多按几次
     - service: switch.turn_off
       entity_id: switch.screen
@@ -116,7 +121,6 @@ theater_mode_off:
       entity_id: switch.screen
     - service: switch.turn_off
       entity_id: switch.screen
-    - delay: 00:00:01
     # 关闭投影仪 为了保险多按几次
     - service: switch.turn_off
       entity_id: switch.projector_power
@@ -132,8 +136,3 @@ theater_mode_off:
     - delay: 00:00:03
     - service: switch.turn_off
       entity_id: switch.projector_power
-    # 开灯 天亮的话就不开
-    - service: switch.turn_on
-      data_template:
-        entity_id: >
-          switch.light{% if is_state('sun.sun','below_horizon') %}_2_smart{% endif %}

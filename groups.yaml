@@ -11,7 +11,7 @@ theater:  # 前端有用到
   icon: mdi:movie-open
   entities:
     - switch.theater_mode
-    - switch.amplifier_power
+    # - switch.amplifier_power
     - switch.projector_power
     - switch.screen
     - switch.screen_pause
