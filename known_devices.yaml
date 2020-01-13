@@ -21,7 +21,7 @@ erimussiphonexr:
   name: Erimus's iPhoneXR
   picture:
   track: true
-  # consider_home: 60
+  consider_home: 60
 
 erimussmba:
   hide_if_away: false
