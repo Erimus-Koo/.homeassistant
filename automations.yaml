@@ -15,10 +15,10 @@
   alias: Home Return Fuzzy  # 这个名称会以下划线替换空格成为id
   description: 判断即将到家
   trigger:
-  - entity_id: device_tracker.erimussiphonexr
-    event: enter
-    platform: zone
-    zone: zone.home
+    - entity_id: device_tracker.erimussiphonexr
+      event: enter
+      platform: zone
+      zone: zone.home
   condition: []
   action:
     - service: input_boolean.turn_on  # 状态记录器
@@ -29,10 +29,10 @@
   alias: Home Return Exact  # 这个名称会以下划线替换空格成为id
   description: 回家时开启电器
   trigger:
-  - entity_id: device_tracker.pingiphonexr
-    platform: state
-    from: 'not_home'
-    to: 'home'
+    - entity_id: device_tracker.pingiphonexr
+      platform: state
+      from: 'not_home'
+      to: 'home'
   condition:
     condition: state
     entity_id: input_boolean.home_return_fuzzy
@@ -40,14 +40,14 @@
   action:
     - service: switch.turn_on  # 开功放
       entity_id: switch.amplifier_power
+    # template 如果没有else会导致异常并中断，就要放在最后。
     - service_template: >  # 太阳落山的话开灯
-        {% if is_state('sun.sun','below_horizon') %}switch.turn_on{% endif %}
+        switch.turn_{% if is_state('sun.sun','below_horizon') %}on{% else %}off{% endif %}
       entity_id:
         - switch.light_2_smart
         - switch.light_3_smart
     - service: shell_command.say_welcom_back  # 欢迎问候
     - service: shell_command.send_volume_up  # wakeup screen
-    - delay: 5
     - service: shell_command.send_next_track  # 播放（远程电脑上已开启的播放器）
     - service: input_boolean.turn_off  # 状态记录器
       entity_id: input_boolean.home_return_fuzzy
@@ -57,14 +57,14 @@
   alias: Home Leave
   description: 离家时关闭电器
   trigger:
-  - entity_id: device_tracker.erimussiphonexr
-    event: leave
-    platform: zone
-    zone: zone.home
+    - entity_id: device_tracker.erimussiphonexr
+      event: leave
+      platform: zone
+      zone: zone.home
   condition:  # 防止iCloud偶尔抽风误触 加一个ping判断
-    condition: state
-    entity_id: device_tracker.pingiphonexr
-    state: 'not_home'
+    - condition: state
+      entity_id: device_tracker.pingiphonexr
+      state: 'not_home'
   action:
     - service: switch.turn_off
       entity_id:
@@ -80,11 +80,11 @@
   alias: Auto turn off pump
   description: 自动关水泵
   trigger:
-  - entity_id: switch.water_pump
-    platform: state
-    from: 'off'
-    to: 'on'
-    for: 00:15:00
+    - entity_id: switch.water_pump
+      platform: state
+      from: 'off'
+      to: 'on'
+      for: 00:15:00
   condition: []
   action:
   - entity_id: switch.water_pump
