@@ -116,14 +116,13 @@ device_tracker:  # 设备跟踪器
       pingiphonexr: 10.0.0.22
       # count: 2  # 发包数
       # scan_interval: 30
-  # 使用icloud追踪位置
-  # 重启后在网页会提示登陆认证，按要求操作即可。
-  # 成功后会在known_devices.yaml生成icloud包含的设备
-  - platform: icloud
-    username: !secret icloud_username
+
+# 使用icloud追踪位置
+# 重启后在网页会提示登陆认证，按要求操作即可。
+# 成功后会在known_devices.yaml生成icloud包含的设备
+icloud:
+  - username: !secret icloud_username
     password: !secret icloud_password
-    account_name: Erimus_iCloud
-    # max_interval: 3
 
 remote:  # 遥控器
   - platform: broadlink

@@ -65,6 +65,11 @@
       command_on: ''
       command_off: ''
 
+    blank:  # 空开关
+      friendly_name: Blank Switch
+      command_on: ''
+      command_off: ''
+
     light_1:
       friendly_name: Light 1
       command_on: eQAYAQgXCRYJFwgXCBcZBwgXCBcJFgoWGAcYBxkGGQcJFhgHCRcJFgkWCRYKFgkWGAcZBwjyCRYJFwgXCRYJFhkHCRYJFgkWCRcYBxkGGQcYBwkWGQcJFgkWCRcIFwkWCRYZBxgHCfEJFwkWCRYJFwgXGAcJFwgXCBcJFhkHGAcYCBgHCBcYBwkWCRcJFgkWCRcJFhgHGQcI8gkWCRYJFwgXCRYZBwgXCRcIFwgXGAcZBxgHGAcJFhkHCRYJFgkXCBcJFgkWGQcYBwnxCRcJFgkWCRcIFxkGCRcIFwkWCRYZBxgHGQcYBwkWGAcJFwkWCRYJFwgXCBcZBxgHCfEJFgkXCBcJFgkXGAcJFgkXCBcJFhgIGAcYBxgABdw=

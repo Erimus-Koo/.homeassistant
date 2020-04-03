@@ -105,26 +105,20 @@ theater_mode_off:
     # 状态记录器
     - service: input_boolean.turn_off
       entity_id: input_boolean.theater_mode
+    # 关闭投影仪 为了保险多按几次
+    - service: switch.turn_off
+      entity_id: switch.projector_power
+    - delay: 00:00:01
+    - service: switch.turn_off
+      entity_id: switch.projector_power
+    - delay: 00:00:01
+    - service: switch.turn_off
+      entity_id: switch.projector_power
     # 开灯 天亮的话就不开
     - service: switch.turn_on
       data_template:
         entity_id: >
-          switch.light{% if is_state('sun.sun','below_horizon') %}_2_smart{% endif %}
-    # 关闭投影仪 为了保险多按几次
-    - service: switch.turn_off
-      entity_id: switch.projector_power
-    - delay: 00:00:03
-    - service: switch.turn_off
-      entity_id: switch.projector_power
-    - delay: 00:00:03
-    - service: switch.turn_off
-      entity_id: switch.projector_power
-    - delay: 00:00:03
-    - service: switch.turn_off
-      entity_id: switch.projector_power
-    - delay: 00:00:03
-    - service: switch.turn_off
-      entity_id: switch.projector_power
+          switch.light{% if is_state('sun.sun','below_horizon') %}_3_smart{% endif %}
     # 收起幕布 不灵敏多按几次
     - service: switch.turn_off
       entity_id: switch.screen
@@ -136,3 +130,20 @@ theater_mode_off:
       entity_id: switch.screen
     - service: switch.turn_off
       entity_id: switch.screen
+
+home_return_exact:
+  alias: 'Return Home'
+  sequence:
+    - service: input_boolean.turn_off  # 状态记录器
+      entity_id: input_boolean.home_return_fuzzy
+    - service: switch.turn_on  # 开功放
+      entity_id: switch.amplifier_smart
+    # template 如果没有else会导致异常并中断，就要放在最后。
+    - service_template: >  # 太阳落山的话开灯
+        switch.turn_{% if is_state('sun.sun','below_horizon') %}on{% else %}off{% endif %}
+      entity_id:
+        - switch.light_2_smart
+        - switch.light_3_smart
+    - service: shell_command.say_welcom_back  # 欢迎问候
+    - service: shell_command.send_volume_up  # wakeup screen
+    - service: shell_command.send_next_track  # 播放（远程电脑上已开启的播放器）

@@ -13,7 +13,7 @@
             "resources": [
                 {
                     "type": "module",
-                    "url": "/community_plugin/mini-graph-card/mini-graph-card-bundle.beta.js"
+                    "url": "/www/community/mini-graph-card/mini-graph-card-bundle.js"
                 }
             ],
             "title": "Home 402",
@@ -26,8 +26,9 @@
                                 {
                                     "cards": [
                                         {
-                                            "entity": "group.all_switches",
-                                            "icon_height": "88px",
+                                            "entity": "group.theater",
+                                            "icon_height": "105px",
+                                            "name": "Amplifier",
                                             "show_name": false,
                                             "tap_action": {
                                                 "action": "more-info"
@@ -35,17 +36,14 @@
                                             "type": "entity-button"
                                         },
                                         {
-                                            "entity": "group.all_scripts",
-                                            "icon_height": "88px",
+                                            "entity": "switch.aircon_smart",
+                                            "icon_height": "105px",
                                             "show_name": false,
-                                            "tap_action": {
-                                                "action": "more-info"
-                                            },
                                             "type": "entity-button"
                                         },
                                         {
-                                            "entity": "group.all_devices",
-                                            "icon_height": "88px",
+                                            "entity": "group.less_used_switches",
+                                            "icon_height": "105px",
                                             "show_name": false,
                                             "tap_action": {
                                                 "action": "more-info"
@@ -59,19 +57,19 @@
                                     "cards": [
                                         {
                                             "entity": "switch.light_2",
-                                            "icon_height": "88px",
+                                            "icon_height": "105px",
                                             "show_name": false,
                                             "type": "entity-button"
                                         },
                                         {
                                             "entity": "switch.light_3",
-                                            "icon_height": "88px",
+                                            "icon_height": "105px",
                                             "show_name": false,
                                             "type": "entity-button"
                                         },
                                         {
                                             "entity": "switch.light_1",
-                                            "icon_height": "88px",
+                                            "icon_height": "105px",
                                             "show_name": false,
                                             "type": "entity-button"
                                         }
@@ -82,7 +80,7 @@
                                     "cards": [
                                         {
                                             "entity": "script.media_previous",
-                                            "icon_height": "88px",
+                                            "icon_height": "105px",
                                             "show_name": false,
                                             "tap_action": {
                                                 "action": "call-service",
@@ -92,7 +90,7 @@
                                         },
                                         {
                                             "entity": "script.media_play_pause",
-                                            "icon_height": "88px",
+                                            "icon_height": "105px",
                                             "show_name": false,
                                             "tap_action": {
                                                 "action": "call-service",
@@ -102,7 +100,7 @@
                                         },
                                         {
                                             "entity": "script.media_next",
-                                            "icon_height": "88px",
+                                            "icon_height": "105px",
                                             "show_name": false,
                                             "tap_action": {
                                                 "action": "call-service",
@@ -117,14 +115,14 @@
                                     "cards": [
                                         {
                                             "entity": "switch.amplifier_mute",
-                                            "icon_height": "88px",
+                                            "icon_height": "105px",
                                             "name": "Mute",
                                             "show_name": false,
                                             "type": "entity-button"
                                         },
                                         {
                                             "entity": "script.amplifier_volume_down_10_times",
-                                            "icon_height": "88px",
+                                            "icon_height": "105px",
                                             "name": "Vol--",
                                             "show_name": false,
                                             "tap_action": {
@@ -135,40 +133,13 @@
                                         },
                                         {
                                             "entity": "script.amplifier_volume_up_10_times",
-                                            "icon_height": "88px",
+                                            "icon_height": "105px",
                                             "name": "Vol++",
                                             "show_name": false,
                                             "tap_action": {
                                                 "action": "call-service",
                                                 "service": "script.amplifier_volume_up_10_times"
                                             },
-                                            "type": "entity-button"
-                                        }
-                                    ],
-                                    "type": "horizontal-stack"
-                                },
-                                {
-                                    "cards": [
-                                        {
-                                            "entity": "group.theater",
-                                            "icon_height": "88px",
-                                            "name": "Amplifier",
-                                            "show_name": false,
-                                            "tap_action": {
-                                                "action": "more-info"
-                                            },
-                                            "type": "entity-button"
-                                        },
-                                        {
-                                            "entity": "switch.aircon_smart",
-                                            "icon_height": "88px",
-                                            "show_name": false,
-                                            "type": "entity-button"
-                                        },
-                                        {
-                                            "entity": "switch.water_pump",
-                                            "icon_height": "88px",
-                                            "show_name": false,
                                             "type": "entity-button"
                                         }
                                     ],
@@ -313,7 +284,8 @@
                     ],
                     "icon": "mdi:home",
                     "panel": false,
-                    "path": "default_view",
+                    "path": "home",
+                    "theme": "erimus-dark-mode",
                     "title": "Home"
                 }
             ]

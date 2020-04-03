@@ -99,3 +99,18 @@
         data_template:
           entity_id: >
             switch.light{% if is_state('switch.light_3', 'on') %}_3{% endif %}
+
+    amplifier_smart:
+      friendly_name: Amplifier smart
+      icon_template: mdi:speaker
+      value_template: "{{ states('switch.amplifier_power') }}"
+      turn_on:
+        service: switch.turn_on
+        data_template:
+          entity_id: >
+            {% if is_state('switch.amplifier_power', 'off') %}switch.amplifier_power{% else %}switch.blank{% endif %}
+      turn_off:
+        service: switch.turn_off
+        data_template:
+          entity_id: >
+            {% if is_state('switch.amplifier_power', 'on') %}switch.amplifier_power{% else %}switch.blank{% endif %}

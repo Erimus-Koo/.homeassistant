@@ -14,7 +14,7 @@ icloud/
 
 # custom_components
 custom_components/hacs/
-
+www/community/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
