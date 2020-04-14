@@ -140,6 +140,13 @@ climate:  # https://github.com/smartHomeHub/SmartIR/blob/master/docs/CLIMATE.md
     # humidity_sensor: sensor.humidity
     power_sensor: input_boolean.aircon
 
+# 需要手动安装 pip install websocket-client
+# SSL证书问题 https://timonweb.com/tutorials/fixing-certificate_verify_failed-error-when-trying-requests_html-out-on-mac/
+sonoff:  # 易微联
+  username: !secret ewelink_username
+  password: !secret ewelink_password
+  api_region: us
+
 # ================================================== 状态记录器
 input_boolean:
   theater_mode:  # 用来记录剧场模式的状态
@@ -153,9 +160,9 @@ light:
   - platform: switch
     name: Light 1
     entity_id: switch.light_1
-  - platform: switch
+  - platform: switch  # 这里等于做一个alias 用light2替代sonoff原本的id
     name: Light 2
-    entity_id: switch.light_2
+    entity_id: switch.sonoff_1000d557a0
   - platform: switch
     name: Light 3
     entity_id: switch.light_3

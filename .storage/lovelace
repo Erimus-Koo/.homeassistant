@@ -56,7 +56,7 @@
                                 {
                                     "cards": [
                                         {
-                                            "entity": "switch.light_2",
+                                            "entity": "light.light_2",
                                             "icon_height": "105px",
                                             "show_name": false,
                                             "type": "entity-button"

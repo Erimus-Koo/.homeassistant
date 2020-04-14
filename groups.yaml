@@ -3,7 +3,7 @@
 light:  # 开关时可整组开关
   entities:
     - switch.light_1_smart
-    - switch.light_2_smart
+    - switch.light_2_smart  # 这里如果直接用light.light_2就无法用switch统一控制
     - switch.light_3_smart
 
 theater:  # 前端有用到
@@ -21,7 +21,7 @@ less_used_switches:
   icon: mdi:toggle-switch
   entities:
     - switch.light_1
-    - switch.light_2
+    - light.light_2
     - switch.light_3
     - switch.water_pump
     - script.home_return_exact

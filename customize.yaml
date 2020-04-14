@@ -32,7 +32,7 @@ switch.light:
   hidden: true  # 隐藏使其不在前端出现
 switch.light_1:
   icon: 'mdi:wall-sconce-flat'
-switch.light_2:
+light.light_2:
   icon: 'mdi:ceiling-light'
 switch.light_3:
   icon: 'mdi:track-light'

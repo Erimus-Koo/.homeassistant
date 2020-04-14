@@ -95,9 +95,11 @@ HA 说是入门比较简单，但其实许多教程都说得比较含糊笼统�
 
 - 首先你要有 python，从这里安装 [Download Python | Python.org](https://www.python.org/downloads/)。直接装就完了，这步不展开了。
 
-- 然后有了 python 你应该就有了 pip。简单来说，在命令行键入 `pip install homeassistant` 。万一提示 pip 命令不存在，自己查资料看看怎么解决。
+- 然后有了 python 你应该就有了 pip。简单来说，在命令行键入 `pip install homeassistant` 。万一提示 `pip` 命令不存在，自己查资料看看怎么解决。
 
 - 其它也有直接下载打包文件，或者 docker 之类的，懂的自然懂，小白也没必要学。  
+
+- 最好安装一下 `pip install colorlog`，后期捉虫方便一些。
 
 - 扩展阅读
     + [Install Home Assistant - Home Assistant](https://www.home-assistant.io/getting-started/)
@@ -154,6 +156,7 @@ HA 说是入门比较简单，但其实许多教程都说得比较含糊笼统�
 
 - 如果运行失败，有可能是上次没有完全退出，端口被占用。  
     Mac 可以试试在命令行输入 `lsof -i :8123` 看看是否被占用，如果有，杀掉对应的 `PID` 进程就好了。  
+    另外 `lsof -i :51827` 是 homekit 的默认端口，有时候也需要手动杀进程。
 
 ### Step 5. 前端页面常用功能
 

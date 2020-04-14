@@ -115,10 +115,10 @@ theater_mode_off:
     - service: switch.turn_off
       entity_id: switch.projector_power
     # 开灯 天亮的话就不开
-    - service: switch.turn_on
-      data_template:
-        entity_id: >
-          switch.light{% if is_state('sun.sun','below_horizon') %}_3_smart{% endif %}
+    - service_template: >  # 太阳落山的话开灯
+        switch.turn_{% if is_state('sun.sun','below_horizon') %}on{% else %}off{% endif %}
+      entity_id:
+        - switch.light_2_smart
     # 收起幕布 不灵敏多按几次
     - service: switch.turn_off
       entity_id: switch.screen

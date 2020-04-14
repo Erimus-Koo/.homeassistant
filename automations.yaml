@@ -23,10 +23,6 @@
   action:
     - service: input_boolean.turn_on  # 状态记录器
       entity_id: input_boolean.home_return_fuzzy
-    - service_template: >  # 太阳落山的话开灯
-        switch.turn_{% if is_state('sun.sun','below_horizon') %}on{% else %}off{% endif %}
-      entity_id:
-        - switch.light_2_smart  # 预开灯跳过闪烁
 
 # 精确的到家时间 ping作为开关
 - id: home_return_exact
