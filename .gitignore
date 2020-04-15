@@ -5,6 +5,7 @@
 home-assistant.log
 home-assistant_v2.db
 secrets.yaml
+.sonoff.json
 deps/
 icloud/
 

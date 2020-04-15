@@ -140,8 +140,10 @@ climate:  # https://github.com/smartHomeHub/SmartIR/blob/master/docs/CLIMATE.md
     # humidity_sensor: sensor.humidity
     power_sensor: input_boolean.aircon
 
+# https://github.com/peterbuga/HASS-sonoff-ewelink 这个有问题
 # 需要手动安装 pip install websocket-client
 # SSL证书问题 https://timonweb.com/tutorials/fixing-certificate_verify_failed-error-when-trying-requests_html-out-on-mac/
+# 最终用的这个 https://github.com/AlexxIT/SonoffLAN
 sonoff:  # 易微联
   username: !secret ewelink_username
   password: !secret ewelink_password
@@ -162,6 +164,7 @@ light:
     entity_id: switch.light_1
   - platform: switch  # 这里等于做一个alias 用light2替代sonoff原本的id
     name: Light 2
+    # entity_id: switch.light_2
     entity_id: switch.sonoff_1000d557a0
   - platform: switch
     name: Light 3
