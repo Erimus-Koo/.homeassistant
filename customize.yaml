@@ -36,8 +36,8 @@ light.light_2:
   icon: 'mdi:ceiling-light'
 switch.light_3:
   icon: 'mdi:track-light'
-switch.light_all:
-  icon: 'mdi:home-lightbulb'
+# switch.light_all:
+#   icon: 'mdi:home-lightbulb'
 
 switch.water_pump:
   icon: 'mdi:water-pump'

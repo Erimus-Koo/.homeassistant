@@ -63,12 +63,20 @@
         service: switch.turn_on
         data_template:
           entity_id: >
-            switch.light{% if is_state('switch.light_1', 'off') %}_1{% endif %}
+            {% if is_state('switch.light_1', 'off') %}
+              switch.light_1
+            {% else %}
+              switch.blank
+            {% endif %}
       turn_off:
         service: switch.turn_off
         data_template:
           entity_id: >
-            switch.light{% if is_state('switch.light_1', 'on') %}_1{% endif %}
+            {% if is_state('switch.light_1', 'on') %}
+              switch.light_1
+            {% else %}
+              switch.blank
+            {% endif %}
 
     light_2_smart:
       friendly_name: Light 2 smart
@@ -91,12 +99,20 @@
         service: switch.turn_on
         data_template:
           entity_id: >
-            switch.light{% if is_state('switch.light_3', 'off') %}_3{% endif %}
+            {% if is_state('switch.light_3', 'off') %}
+              switch.light_3
+            {% else %}
+              switch.blank
+            {% endif %}
       turn_off:
         service: switch.turn_off
         data_template:
           entity_id: >
-            switch.light{% if is_state('switch.light_3', 'on') %}_3{% endif %}
+            {% if is_state('switch.light_3', 'on') %}
+              switch.light_3
+            {% else %}
+              switch.blank
+            {% endif %}
 
     amplifier_smart:
       friendly_name: Amplifier smart
@@ -106,9 +122,17 @@
         service: switch.turn_on
         data_template:
           entity_id: >
-            {% if is_state('switch.amplifier_power', 'off') %}switch.amplifier_power{% else %}switch.blank{% endif %}
+            {% if is_state('switch.amplifier_power', 'off') %}
+              switch.amplifier_power
+            {% else %}
+              switch.blank
+            {% endif %}
       turn_off:
         service: switch.turn_off
         data_template:
           entity_id: >
-            {% if is_state('switch.amplifier_power', 'on') %}switch.amplifier_power{% else %}switch.blank{% endif %}
+            {% if is_state('switch.amplifier_power', 'on') %}
+              switch.amplifier_power
+            {% else %}
+              switch.blank
+            {% endif %}
