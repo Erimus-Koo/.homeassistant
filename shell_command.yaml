@@ -8,7 +8,10 @@ say_welcom_back: 'say "欢迎回家"'
 # 可以通过发送媒体键，来控制远程电脑上的播放器。
 # https://github.com/Erimus-Koo/utility/blob/master/remote_key_service.py
 # send_stop: 'curl -v http://10.0.0.13:8836/send?key=stop'
-send_play_pause: 'curl http://10.0.0.13:8836/send?key=playpause'
-send_previous_track: 'curl http://10.0.0.13:8836/send?key=prevtrack'
-send_next_track: 'curl http://10.0.0.13:8836/send?key=nexttrack'
-send_volume_up: 'curl http://10.0.0.13:8836/send?key=volumeup'  # wakeup screen
+send_play_pause: 'curl http://10.0.0.13:8836/api?key=playpause'
+send_previous_track: 'curl http://10.0.0.13:8836/api?key=prevtrack'
+send_next_track: 'curl http://10.0.0.13:8836/api?key=nexttrack'
+send_volume_up: 'curl http://10.0.0.13:8836/api?key=volumeup'  # wakeup screen
+
+open_musicbee: 'curl http://10.0.0.13:8836/api?open=musicbee'
+keep_screen_on: 'curl http://10.0.0.13:8836/api?open=keepscreen'
