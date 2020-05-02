@@ -131,11 +131,12 @@ theater_mode_off:
     - service: switch.turn_off
       entity_id: switch.screen
 
+# return & leave home actions ==============================
 home_return:
   alias: 'Return Home'
   sequence:
-    # - service: input_boolean.turn_off  # 状态记录器
-    #   entity_id: input_boolean.home_return_fuzzy
+    - service: input_boolean.turn_on  # 状态记录器
+      entity_id: input_boolean.at_home
     # template 如果没有else会导致异常并中断，就要放在最后。
     - service_template: >  # 太阳落山的话开灯
         switch.turn_{% if is_state('sun.sun','below_horizon') %}on{% else %}off{% endif %}
@@ -150,3 +151,16 @@ home_return:
     - delay: 00:00:03
     - service: shell_command.say_welcom_back  # 欢迎问候
     - service: shell_command.send_next_track  # 播放（远程电脑上已开启的播放器）
+
+home_leave:
+  alias: 'Leave Home'
+  sequence:
+    - service: input_boolean.turn_off  # 状态记录器
+      entity_id: input_boolean.at_home
+    - service: switch.turn_off
+      entity_id:
+        - switch.amplifier_smart
+        - switch.water_pump
+        - switch.aircon_power_off
+        - group.light
+    - service: shell_command.screen_off  # 息屏

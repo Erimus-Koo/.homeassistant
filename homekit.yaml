@@ -10,7 +10,6 @@ filter:
   # include_domains:
 
   include_entities:  # 要出现的
-    - script.home_return
 
     # Amplifier
     - script.amplifier_volume_up_10_times
@@ -39,6 +38,9 @@ filter:
     # - script.theater_mode_on
     # - script.theater_mode_off
     - switch.theater_mode
+
+    # Leave or return home
+    - switch.at_home
 
     # Sensor
     # 需要在 customize 里设置特定的 device_class 来帮助识别

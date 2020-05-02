@@ -136,3 +136,16 @@
             {% else %}
               switch.blank
             {% endif %}
+
+    # 在家 ==============================
+    # 把在家和离家的一系列操作变成一个开关。
+    # 这样可以用一个按钮调用到家/离家的两组动作。
+    # 拆分成脚本只是为了易读。
+    at_home:
+      friendly_name: At Home
+      icon_template: mdi:home
+      value_template: "{{ is_state('input_boolean.at_home', 'on') }}"
+      turn_on:
+        - service: script.home_return
+      turn_off:
+        - service: script.home_leave

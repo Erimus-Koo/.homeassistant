@@ -107,10 +107,4 @@
       from: 'home'
       to: 'not_home'
   action:
-    - service: switch.turn_off
-      entity_id:
-        - switch.amplifier_smart
-        - switch.water_pump
-        - switch.aircon_power_off
-        - group.light
-    - service: shell_command.screen_off  # 息屏
+    - service: script.home_leave
