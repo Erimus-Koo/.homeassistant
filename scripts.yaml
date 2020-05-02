@@ -5,7 +5,7 @@
 
 # amplifier ==============================
 amplifier_volume_up_10_times:
-  alias: Amplifier Vol ++
+  alias: Amplifier Vol Up
   sequence:
     - service: switch.turn_on
       entity_id: switch.amplifier_volume_up
@@ -30,7 +30,7 @@ amplifier_volume_up_10_times:
     - delay: 00:00:00
 
 amplifier_volume_down_10_times:
-  alias: Amplifier Vol --
+  alias: Amplifier Vol Down
   sequence:
     - service: switch.turn_on
       entity_id: switch.amplifier_volume_down
@@ -56,7 +56,7 @@ amplifier_volume_down_10_times:
 
 # 发送媒体键 shell command 无法被前端直接调用 套个壳
 media_play_pause:
-  alias: Play/Pause
+  alias: Play Pause
   sequence:
     - service: shell_command.send_play_pause
 media_previous:
@@ -131,13 +131,11 @@ theater_mode_off:
     - service: switch.turn_off
       entity_id: switch.screen
 
-home_return_exact:
+home_return:
   alias: 'Return Home'
   sequence:
-    - service: input_boolean.turn_off  # 状态记录器
-      entity_id: input_boolean.home_return_fuzzy
-    - service: switch.turn_on  # 开功放
-      entity_id: switch.amplifier_smart
+    # - service: input_boolean.turn_off  # 状态记录器
+    #   entity_id: input_boolean.home_return_fuzzy
     # template 如果没有else会导致异常并中断，就要放在最后。
     - service_template: >  # 太阳落山的话开灯
         switch.turn_{% if is_state('sun.sun','below_horizon') %}on{% else %}off{% endif %}
@@ -147,6 +145,8 @@ home_return_exact:
     - service: shell_command.send_volume_up  # wakeup screen
     - service: shell_command.open_musicbee  # 打开播放器
     - service: shell_command.keep_screen_on  # 关闭自动锁屏
+    - service: switch.turn_on  # 开功放
+      entity_id: switch.amplifier_smart
     - delay: 00:00:03
     - service: shell_command.say_welcom_back  # 欢迎问候
     - service: shell_command.send_next_track  # 播放（远程电脑上已开启的播放器）

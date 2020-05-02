@@ -24,7 +24,7 @@ less_used_switches:
     - light.light_2
     - switch.light_3
     - switch.water_pump
-    - script.home_return_exact
+    - script.home_return
 
 # amplifier:
 #   entities:

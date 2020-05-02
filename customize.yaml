@@ -80,3 +80,6 @@ group.all_devices:
 group.all_automations:
   icon: 'mdi:auto-fix'
   friendly_name: Automations
+
+person.erimus:
+  entity_picture: /local/erimus.gif  # 对应的图片需要放在/www内

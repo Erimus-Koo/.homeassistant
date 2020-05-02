@@ -81,6 +81,15 @@ zone:
     radius: 100
     icon: mdi:home
 
+# https://www.home-assistant.io/integrations/person/
+person:
+  - name: Erimus
+    id: erimus
+    user_id: !secret home_assistant_user_id
+    device_trackers:
+      - device_tracker.erimuss_iphonexr
+      - device_tracker.ping_iphonexr
+
 # Track the sun 日出/日落/等
 sun:
 
@@ -110,19 +119,19 @@ shell_command: !include shell_command.yaml
 # https://www.home-assistant.io/integrations/device_tracker/
 device_tracker:  # 设备跟踪器
   # 使用ping确认手机是否接入局域网
-  # 在known_devices.yaml添加对应设备可以定义名称等细节
   - platform: ping
     hosts:
-      pingiphonexr: 10.0.0.22
-      # count: 2  # 发包数
-      # scan_interval: 30
+      ping_iphonexr: 10.0.0.22
+    consider_home: 600  # 判断离开所需的秒数
 
 # 使用icloud追踪位置
 # 重启后在网页会提示登陆认证，按要求操作即可。
-# 成功后会在known_devices.yaml生成icloud包含的设备
+# https://www.home-assistant.io/integrations/icloud/
 icloud:
   - username: !secret icloud_username
     password: !secret icloud_password
+    max_interval: 3  # 每隔3分钟取一次位置 即便是静止状态
+    gps_accuracy_threshold: 100  # gps精度 默认500
 
 remote:  # 遥控器
   - platform: broadlink
@@ -147,12 +156,12 @@ climate:  # https://github.com/smartHomeHub/SmartIR/blob/master/docs/CLIMATE.md
 sonoff:  # 易微联
   username: !secret ewelink_username
   password: !secret ewelink_password
-  api_region: us
+  api_region: us  # 根据自己注册的账号所在地区填写
 
 # ================================================== 状态记录器
 input_boolean:
   theater_mode:  # 用来记录剧场模式的状态
-  home_return_fuzzy:  # 用来记录iphone是否即将到家
+  # home_return_fuzzy:  # 用来记录iphone是否即将到家
 
 # ================================================== HomeKit适配
 # 这里重复分组只是为了在homekit自动识别为灯泡，否则会识别为开关，要手动改图标。
