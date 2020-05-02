@@ -14,4 +14,5 @@ send_next_track: 'curl http://10.0.0.13:8836/api?key=nexttrack'
 send_volume_up: 'curl http://10.0.0.13:8836/api?key=volumeup'  # wakeup screen
 
 open_musicbee: 'curl http://10.0.0.13:8836/api?open=musicbee'
-keep_screen_on: 'curl http://10.0.0.13:8836/api?open=keepscreen'
+keep_screen_on: 'curl http://10.0.0.13:8836/api?open=keepdisplayon'
+screen_off: 'curl http://10.0.0.13:8836/api?screen_off=1'
