@@ -143,13 +143,13 @@ home_return:
       entity_id:
         - switch.light_2_smart
         - switch.light_3_smart
+    - service: shell_command.say_welcome_back  # 欢迎问候
     - service: shell_command.send_volume_up  # wakeup screen
     - service: shell_command.open_musicbee  # 打开播放器
     - service: shell_command.keep_screen_on  # 关闭自动锁屏
     - service: switch.turn_on  # 开功放
       entity_id: switch.amplifier_smart
     - delay: 00:00:03
-    - service: shell_command.say_welcom_back  # 欢迎问候
     - service: shell_command.send_next_track  # 播放（远程电脑上已开启的播放器）
 
 home_leave:
@@ -157,6 +157,7 @@ home_leave:
   sequence:
     - service: input_boolean.turn_off  # 状态记录器
       entity_id: input_boolean.at_home
+    - service: shell_command.say_welcome_leave  # 欢迎问候
     - service: switch.turn_off
       entity_id:
         - switch.amplifier_smart

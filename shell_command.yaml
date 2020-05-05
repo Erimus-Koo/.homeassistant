@@ -2,7 +2,8 @@
 
 # say_time: 'say "现在是{{now().hour}}点{{now().minute}}分"'
 
-say_welcom_back: 'say "欢迎回家"'
+say_welcome_back: 'say "欢迎回家"'
+say_welcome_leave: 'say "路上小心"'
 
 # 以下是利用我写的另一个服务，在一台远程电脑上接收按键命令并在远程机器运行。
 # 可以通过发送媒体键，来控制远程电脑上的播放器。
