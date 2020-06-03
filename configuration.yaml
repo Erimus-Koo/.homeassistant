@@ -22,6 +22,7 @@ homeassistant:
       allow_bypass_login: true
     - type: homeassistant
 
+zeroconf:
 group: !include groups.yaml  # 分组
 automation: !include automations.yaml  # 自动化
 script: !include scripts.yaml  # 脚本/批处理命令
@@ -31,8 +32,8 @@ homekit: !include homekit.yaml  # 管理homekit出现的项目
 
 # iOS App 需要的部件
 default_config:
-mobile_app:
-discovery:  # Discover some devices automatically
+# mobile_app:
+# discovery:  # Discover some devices automatically
 ios:  # advanced notifications like actionable notifications and categories
 # cloud:  # securely connecting to your Home Assistant via Nabu Casa
 
