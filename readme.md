@@ -343,3 +343,7 @@ HA 说是入门比较简单，但其实许多教程都说得比较含糊笼统�
 
 - [Integrations - Home Assistant](https://www.home-assistant.io/integrations/) 所有可以整合的设备服务一览
 - [Home Assistant Demo](https://demo.home-assistant.io/#/lovelace/0) Lovelace 的示范页面
+
+# memo
+
+- `/local/` in yaml or resources equals the real path `/www/`.
