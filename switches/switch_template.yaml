@@ -33,15 +33,15 @@
             temperature: >
               {% if states('sensor.pudong_temperature') | float < 15 %}
                 30
-              {% elif states('sensor.pudong_temperature') | float > 25 %}
-                26
+              {% elif states('sensor.pudong_temperature') | float > 20 %}
+                25
               {% else %}
-                20
+                25
               {% endif %}
             hvac_mode: >
               {% if states('sensor.pudong_temperature') | float < 15 %}
                 heat
-              {% elif states('sensor.pudong_temperature') | float > 25 %}
+              {% elif states('sensor.pudong_temperature') | float > 20 %}
                 cool
               {% else %}
                 fan_only
