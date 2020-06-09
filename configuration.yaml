@@ -68,6 +68,9 @@ history:
 # View all events in a logbook
 logbook:
 
+# https://developers.home-assistant.io/docs/api/rest
+api:
+
 # Enables a map showing the location of tracked devices
 map:
 
