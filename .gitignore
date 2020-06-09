@@ -8,6 +8,7 @@ secrets.yaml
 .sonoff.json
 deps/
 icloud/
+backup/
 
 # .storage
 .storage/*
