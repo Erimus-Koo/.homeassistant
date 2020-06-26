@@ -94,6 +94,10 @@
       platform: state
       from: 'not_home'
       to: 'home'
+  condition:
+    - condition: state
+      entity_id: input_boolean.at_home
+      state: 'off'
   action:
     - service: script.home_return
 
@@ -106,5 +110,9 @@
       platform: state
       from: 'home'
       to: 'not_home'
+  condition:
+    - condition: state
+      entity_id: input_boolean.at_home
+      state: 'on'
   action:
     - service: script.home_leave
