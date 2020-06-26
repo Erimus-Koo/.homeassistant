@@ -12,6 +12,7 @@ filter:
   include_entities:  # 要出现的
 
     # Amplifier
+    - switch.amplifier_power
     - script.amplifier_volume_up_10_times
     - script.amplifier_volume_down_10_times
     - switch.amplifier_mute
