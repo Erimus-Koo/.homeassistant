@@ -147,7 +147,7 @@ climate:  # https://github.com/smartHomeHub/SmartIR/blob/master/docs/CLIMATE.md
   - platform: smartir
     name: Aircon Hitachi
     unique_id: hitachi_ac
-    device_code: 1084  # 设备码 见上方链接
+    device_code: 1085  # 设备码 见上方链接
     controller_data: 10.0.0.30
     temperature_sensor: sensor.aircon_temperature
     # humidity_sensor: sensor.humidity
