@@ -167,6 +167,8 @@ input_boolean:
   theater_mode:  # 用来记录剧场模式的状态
   # home_return_fuzzy:  # 用来记录iphone是否即将到家
   at_home:  # 用来记录【在家】开关的状态
+    initial: true
+  playing_sound:  # if windows PC playing sound
 
 # ================================================== HomeKit适配
 # 这里重复分组只是为了在homekit自动识别为灯泡，否则会识别为开关，要手动改图标。

@@ -114,5 +114,8 @@
     - condition: state
       entity_id: input_boolean.at_home
       state: 'on'
+    - condition: state
+      entity_id: input_boolean.playing_sound
+      state: 'off'
   action:
     - service: script.home_leave
