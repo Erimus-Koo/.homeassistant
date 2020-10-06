@@ -151,7 +151,6 @@ home_return:
     - service: shell_command.say_welcome_back  # 欢迎问候
     - service: shell_command.send_volume_up  # wakeup screen
     - service: shell_command.open_musicbee  # 打开播放器
-    - service: shell_command.keep_screen_on  # 关闭自动锁屏
     - delay: 00:00:03
     - service: shell_command.send_next_track  # 播放（远程电脑上已开启的播放器）
 
@@ -165,6 +164,6 @@ home_leave:
       entity_id:
         - switch.amplifier_smart
         - switch.water_pump
-        - switch.aircon_power_off
+        - switch.aircon_smart
         - group.light
     - service: shell_command.screen_off  # 息屏

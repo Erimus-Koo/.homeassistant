@@ -34,7 +34,7 @@
               {% if states('sensor.pudong_temperature') | float < 15 %}
                 30
               {% elif states('sensor.pudong_temperature') | float > 20 %}
-                28
+                30
               {% else %}
                 27
               {% endif %}

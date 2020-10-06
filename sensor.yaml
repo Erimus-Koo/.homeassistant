@@ -25,6 +25,15 @@
   # stations:
   #   - us-consulate
 
+# https://www.home-assistant.io/integrations/mitemp_bt/
+# - platform: mitemp_bt
+#   mac: A4:C1:38:8E:DC:A2
+#   name: Mi Sensor
+#   timeout: 100
+#   force_update: true
+#   median: 1
+  # cache_value: 3600
+
 # 获取attribute作为记录
 # 不少部件只返回一个状态states，但有很多详情在attribute里。
 # 可是HA无法直接统计attr的数字，所以需要单独提取出来记录一份。
