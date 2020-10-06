@@ -83,6 +83,17 @@
   - entity_id: switch.water_pump
     service: switch.turn_off
 
+# 每整点关一次水泵 避免漏关
+- id: auto_turn_off_pump_hourly
+  alias: Auto turn off pump hourly
+  trigger:
+    platform: time_pattern
+    minutes: 0
+  condition: []
+  action:
+  - entity_id: switch.water_pump
+    service: switch.turn_off
+
 # ===== test below
 
 # 精确的到家时间 person.erimus 作为开关
