@@ -101,6 +101,9 @@ theater_mode_on:
     # 关灯
     - service: switch.turn_off
       entity_id: group.light
+    # 关电脑屏幕
+    - service: switch.turn_off
+      entity_id: switch.monitor
 
 theater_mode_off:
   alias: 'Theater Mode OFF'
@@ -121,7 +124,10 @@ theater_mode_off:
     - service_template: >  # 太阳落山的话开灯
         switch.turn_{% if is_state('sun.sun','below_horizon') %}on{% else %}off{% endif %}
       entity_id:
-        - switch.light_2_smart
+        - switch.light_3_smart
+    # 开电脑屏幕
+    - service: switch.turn_on
+      entity_id: switch.monitor
     # 收起幕布 不灵敏多按几次
     - service: switch.turn_off
       entity_id: switch.screen
@@ -146,8 +152,10 @@ home_return:
       entity_id:
         - switch.light_2_smart
         - switch.light_3_smart
-    - service: switch.turn_on  # 开功放
-      entity_id: switch.amplifier_smart
+    - service: switch.turn_on
+      entity_id:
+        - switch.amplifier_smart  # 开功放
+        - switch.monitor  # 开显示器
     - service: shell_command.say_welcome_back  # 欢迎问候
     - service: shell_command.send_volume_up  # wakeup screen
     - service: shell_command.open_musicbee  # 打开播放器
@@ -162,8 +170,10 @@ home_leave:
     - service: shell_command.say_welcome_leave  # 欢迎问候
     - service: switch.turn_off
       entity_id:
+        - switch.monitor
         - switch.amplifier_smart
         - switch.water_pump
         - switch.aircon_smart
+        - switch.purifier
         - group.light
     - service: shell_command.screen_off  # 息屏

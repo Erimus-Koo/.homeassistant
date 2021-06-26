@@ -41,6 +41,10 @@ switch.light_3:
 
 switch.water_pump:
   icon: 'mdi:water-pump'
+switch.purifier:
+  icon: 'mdi:air-purifier'
+switch.monitor:
+  icon: 'mdi:monitor'
 
 script.amplifier_volume_up_10_times:
   icon: 'mdi:volume-plus'

@@ -24,6 +24,8 @@ less_used_switches:
     - light.light_2
     - switch.light_3
     - switch.water_pump
+    - switch.purifier
+    - switch.monitor
     - switch.at_home
 
 # amplifier:

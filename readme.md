@@ -120,7 +120,7 @@ HA 说是入门比较简单，但其实许多教程都说得比较含糊笼统�
         按 `win+r`，然后粘贴前面这段，进入该目录。
     + 其它看这里 [Configuring Home Assistant - Home Assistant](    https://www.home-assistant.io/docs/configuration/)
 
-- 下载好的依赖文件在 `./deps` 目录，我是 195M 。但你现在还没填配置文件，应该会比这个小。如果网络不好卡太久，可以考虑全局梯子。
+- 下载好的依赖文件在 `./deps` 目录，我是 195M（仅供参考，升级后会变化的） 。但你现在还没填配置文件，应该会比这个小。如果网络不好卡太久，可以考虑全局梯子。
 
 - 如果不幸在这一步就遇到问题，可以试试：
     + 删掉 `deps` 目录
@@ -131,7 +131,7 @@ HA 说是入门比较简单，但其实许多教程都说得比较含糊笼统�
     我的是 `http://10.0.0.12:8123`。  
     然后可能会要求你新建一个用户，照办就是了。
 
-- 先关闭 HA 的服务，直接在命令行按下 `ctrl+Z` 好了。
+- 先关闭 HA 的服务，直接在命令行按下 `ctrl+C` 好了。
 
 ### Step 3. 下载配置文件范例
 
@@ -347,3 +347,4 @@ HA 说是入门比较简单，但其实许多教程都说得比较含糊笼统�
 # memo
 
 - `/local/` in yaml or resources equals the real path `/www/`.
+- [Erimus-Koo/Extract_BroadLink_learned_codes_from_iOS_App: 博联 RM Pro+ 最简单学码方式](https://github.com/Erimus-Koo/Extract_BroadLink_learned_codes_from_iOS_App) 博联的射频学习好像是一个坑，有射频设备的看这里。

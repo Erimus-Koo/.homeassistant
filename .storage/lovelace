@@ -79,33 +79,21 @@
                                 {
                                     "cards": [
                                         {
-                                            "entity": "script.media_previous",
+                                            "entity": "switch.theater_mode",
                                             "icon_height": "105px",
                                             "show_name": false,
-                                            "tap_action": {
-                                                "action": "call-service",
-                                                "service": "script.media_previous"
-                                            },
                                             "type": "entity-button"
                                         },
                                         {
-                                            "entity": "script.media_play_pause",
+                                            "entity": "switch.purifier",
                                             "icon_height": "105px",
                                             "show_name": false,
-                                            "tap_action": {
-                                                "action": "call-service",
-                                                "service": "script.media_play_pause"
-                                            },
                                             "type": "entity-button"
                                         },
                                         {
-                                            "entity": "script.media_next",
+                                            "entity": "switch.monitor",
                                             "icon_height": "105px",
                                             "show_name": false,
-                                            "tap_action": {
-                                                "action": "call-service",
-                                                "service": "script.media_next"
-                                            },
                                             "type": "entity-button"
                                         }
                                     ],

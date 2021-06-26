@@ -36,8 +36,6 @@ filter:
     # - switch.screen
 
     # Theater mode
-    # - script.theater_mode_on
-    # - script.theater_mode_off
     - switch.theater_mode
 
     # Leave or return home
@@ -51,9 +49,17 @@ filter:
     # Climate
     - climate.hitachi_ac
 
+    # Purifier
+    - switch.purifier
+
+    # Monitor
+    - switch.monitor
+
   # exclude_entities:  # 要排除的
   #   - remote.broadlink
 
+# 合法图标仅 faucet/outlet/shower/sprinkler/valve
+# https://www.home-assistant.io/integrations/homekit/
 entity_config:
   switch.water_pump:  # 显示为水龙头的图标
-    type: valve  # homekit icon (faucet/outlet/shower/sprinkler/valve)
+    type: faucet

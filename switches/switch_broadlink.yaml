@@ -91,6 +91,16 @@
       command_on: sgc0AAoaChoLGhwJHAkKAAENHAgcCAoaCxoLGhwIHAgcCBwIChocCBwIHAgcCAoaHAgcCAoaCxkAAAAA
       command_off: shA0ABwIHAkKGhwIHAgcCBwIChocCRwJChoLGgsaChoKGgoaHAgLAAEPHAgcCAoaChoKGhwIHAgAAAAA
 
+    purifier:
+      friendly_name: Purifier
+      command_on: sgAEAR4KCh4KHgsdCx0fCR8JHgoeCh4KCh4KHgoeHwkLHQsdHwkLHgoeCh4eCh4KCh4eCgoAATUfCQofCh4KHgoeHgoeCh4KHgoeCQsdCx4KHh4KCh4KHh8JCh4KHgseHgkfCQsdHwkLAAE1HgoKHgoeCx0LHh4KHgkfCR4KHgoKHgsdCx4eCgoeCh4eCgoeCh4KHh4KHgoKHh4KCgABNh4JCx4KHgoeCh4eCh4KHgoeCh4KCh4KHgoeHwkKHgoeHwkKHgseCh4eCh4KCh4eCgoAATUeCgsdCx4KHgoeHgoeCh4KHgkfCQoeCx4KHh4KCh4LHR4KCx0LHQseHgoeCgoeHgkLAAXcAAAAAA==
+      command_off: sgAEAR0KCh4KHwoeCh4eCh4KHgoeCh0KCx4KHgoeHgoKHgoeHgoLHgkfCh4KHh4KCh4eCgoAATYdCwoeCh4KHgoeHgoeCh4KHgoeCgoeCh4KHh4LCR8KHh4KCh4KHgoeCx4dCwkfHgkLAAE1HgoKHgseCh4KHh4KHgoeCR4LHQoKHgseCR8eCgoeCh4eCgoeCx4JHwoeHgoKHh4KCgABNh4KCR4LHgoeCh4fCR4KHgoeCh4KCh4KHgofHQoKHwkfHgoJHwoeCh4KHx4JCh8eCQoAATYeCgofCR8JHwkfHgoeCh0KHgoeCwkfCR8KHh4KCh4KHh4KCh4KHwkfCh4eCgoeHgoKAAXcAAAAAA==
+
+    monitor:
+      friendly_name: Monitor
+      command_on: sgY0AAkcCRwaCgkcCRwaChoLCRwJHAkcGgsaCxsKCRwJHBsKGgsJHBoKCRwJHAkcCRwaCgkAAQ4AAAAA
+      command_off: sgA+AQACcwADZwgcCBwZCggcCBwaChkKCBwIHAgcGQoaCxkKCBwIGxoKGgoIHBkKCRsIHAgcGgkJGwgAAQ4IHAgbGgoIHAgcGQoaCggcCBwIGxoKGgoZCwgbCBwaChkLCBwZCggcCBwIGxoKCBwIAAENCBwIHBkKCBwIHBkLGQoIHAgcCBwZChoKGgoIHAgbGgoaCggcGgoIGwgcCBwZCgkbCAABDggcCBsaCggcCBsaChoKCBwIHAgcGQoaChoJCBwIHBoKGQoIHBoKCBwIGwgcGgoIHAgAAQ0IHAgcGgkJGwgcGgoZCggcCBwIHBkKGgoaCggcCBsaChoKCBwZCwgbCBwIHBkKCRsIAAEPCBwIHBkKCRsIHBoKGgkJGwgcCBwZCxkKGgoIHAgcGQoaCggcGQsIGwkbCBwaCggbCQAF3AAAAAAAAAAAAAA=
+
     # RF Screen ==============================
     screen:
       friendly_name: Screen

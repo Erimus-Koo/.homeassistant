@@ -94,6 +94,58 @@
   - entity_id: switch.water_pump
     service: switch.turn_off
 
+# 监听空气污染状态
+- id: auto_turn_on_purifier
+  alias: Auto turn on purifier
+  description: 根据空气状态自动开净化器
+  trigger:
+    platform: time_pattern
+    minutes: '/10'
+  condition:
+    - condition: state
+      entity_id: input_boolean.at_home
+      state: 'on'
+    - condition: numeric_state
+      entity_id: sensor.waqi_pudong_monitoring_station_shanghai_shang_hai_pu_dong_jian_ce_zhan
+      above: 100
+    - condition: state
+      entity_id: switch.purifier
+      state: 'off'
+  action:
+  - entity_id: switch.purifier
+    service: switch.turn_on
+
+- id: auto_turn_off_purifier
+  alias: Auto turn off purifier
+  description: 根据空气状态自动关净化器
+  trigger:
+    platform: time_pattern
+    minutes: '/10'
+  condition:
+    - condition: state
+      entity_id: input_boolean.at_home
+      state: 'on'
+    - condition: numeric_state
+      entity_id: sensor.waqi_pudong_monitoring_station_shanghai_shang_hai_pu_dong_jian_ce_zhan
+      below: 100
+    - condition: state
+      entity_id: switch.purifier
+      state: 'on'
+  action:
+  - entity_id: switch.purifier
+    service: switch.turn_off
+
+# 每整点关一次水泵 避免漏关
+- id: auto_turn_off_pump_hourly
+  alias: Auto turn off pump hourly
+  trigger:
+    platform: time_pattern
+    minutes: 0
+  condition: []
+  action:
+  - entity_id: switch.water_pump
+    service: switch.turn_off
+
 # ===== test below
 
 # 精确的到家时间 person.erimus 作为开关
@@ -109,6 +161,10 @@
     - condition: state
       entity_id: input_boolean.at_home
       state: 'off'
+    # avoid tirggering by mistake while sleeping
+    - condition: time
+      after: '08:00:00'
+      before: '23:59:00'
   action:
     - service: script.home_return
 

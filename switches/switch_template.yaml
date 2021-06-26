@@ -10,7 +10,7 @@
     # https://community.home-assistant.io/t/make-scripts-as-toggle-switch
     theater_mode:
       friendly_name: Theater Mode
-      icon_template: mdi:movie-open
+      icon_template: mdi:theater
       value_template: "{{ is_state('input_boolean.theater_mode', 'on') }}"
       turn_on:
         - service: script.theater_mode_on
@@ -34,17 +34,17 @@
               {% if states('sensor.pudong_temperature') | float < 15 %}
                 30
               {% elif states('sensor.pudong_temperature') | float > 20 %}
-                30
+                28
               {% else %}
-                27
+                28
               {% endif %}
             hvac_mode: >
               {% if states('sensor.pudong_temperature') | float < 15 %}
                 heat
               {% elif states('sensor.pudong_temperature') | float > 20 %}
-                dry
+                cool
               {% else %}
-                fan_only
+                dry
               {% endif %}
       turn_off:
         - service: climate.turn_off
