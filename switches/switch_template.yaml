@@ -38,8 +38,10 @@
               {% else %}
                 28
               {% endif %}
-            hvac_mode: >
-              {% if states('sensor.pudong_temperature') | float < 15 %}
+            hvac_mode: >  # 偶尔会有sensor取不到值的情况
+              {% if states('sensor.pudong_temperature') == '' %}
+                off
+              {% elif states('sensor.pudong_temperature') | float < 15 %}
                 heat
               {% elif states('sensor.pudong_temperature') | float > 20 %}
                 cool

@@ -126,7 +126,7 @@ device_tracker:  # 设备跟踪器
   - platform: ping
     hosts:
       ping_iphonexr: 10.0.0.22
-    consider_home: 600  # 判断离开所需的秒数
+    consider_home: 900  # 判断离开所需的秒数
 
 # 使用icloud追踪位置
 # 重启后在网页会提示登陆认证，按要求操作即可。
@@ -134,8 +134,8 @@ device_tracker:  # 设备跟踪器
 icloud:
   - username: !secret icloud_username
     password: !secret icloud_password
-    max_interval: 3  # 每隔3分钟取一次位置 即便是静止状态
-    gps_accuracy_threshold: 100  # gps精度 默认500
+    max_interval: 5  # 每隔5分钟取一次位置 即便是静止状态
+    gps_accuracy_threshold: 300  # gps精度 默认500
 
 remote:  # 遥控器
   - platform: broadlink

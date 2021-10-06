@@ -80,8 +80,8 @@
       for: 00:15:00
   condition: []
   action:
-  - entity_id: switch.water_pump
-    service: switch.turn_off
+    - entity_id: switch.water_pump
+      service: switch.turn_off
 
 # 每整点关一次水泵 避免漏关
 - id: auto_turn_off_pump_hourly
@@ -91,49 +91,61 @@
     minutes: 0
   condition: []
   action:
-  - entity_id: switch.water_pump
-    service: switch.turn_off
+    - entity_id: switch.water_pump
+      service: switch.turn_off
 
 # 监听空气污染状态
-- id: auto_turn_on_purifier
-  alias: Auto turn on purifier
-  description: 根据空气状态自动开净化器
-  trigger:
-    platform: time_pattern
-    minutes: '/10'
-  condition:
-    - condition: state
-      entity_id: input_boolean.at_home
-      state: 'on'
-    - condition: numeric_state
-      entity_id: sensor.waqi_pudong_monitoring_station_shanghai_shang_hai_pu_dong_jian_ce_zhan
-      above: 100
-    - condition: state
-      entity_id: switch.purifier
-      state: 'off'
-  action:
-  - entity_id: switch.purifier
-    service: switch.turn_on
+# - id: auto_turn_on_purifier
+#   alias: Auto turn on purifier
+#   description: 根据空气状态自动开净化器
+#   trigger:
+#     platform: time_pattern
+#     minutes: '/10'
+#   condition:
+#     condition: and
+#     conditions:
+#       - condition: state
+#         entity_id: input_boolean.at_home
+#         state: 'on'
+#       - condition: numeric_state
+#         entity_id: sensor.waqi_pudong_monitoring_station_shanghai_shang_hai_pu_dong_jian_ce_zhan
+#         above: 75
+#       - condition: state
+#         entity_id: switch.purifier
+#         state: 'off'
+#   action:
+#     - entity_id: switch.purifier
+#       service: switch.turn_on
+#     - entity_id: switch.purifier
+#       service: switch.turn_on
+#     - entity_id: switch.purifier
+#       service: switch.turn_on
 
-- id: auto_turn_off_purifier
-  alias: Auto turn off purifier
-  description: 根据空气状态自动关净化器
-  trigger:
-    platform: time_pattern
-    minutes: '/10'
-  condition:
-    - condition: state
-      entity_id: input_boolean.at_home
-      state: 'on'
-    - condition: numeric_state
-      entity_id: sensor.waqi_pudong_monitoring_station_shanghai_shang_hai_pu_dong_jian_ce_zhan
-      below: 100
-    - condition: state
-      entity_id: switch.purifier
-      state: 'on'
-  action:
-  - entity_id: switch.purifier
-    service: switch.turn_off
+# - id: auto_turn_off_purifier
+#   alias: Auto turn off purifier
+#   description: 根据空气状态自动关净化器
+#   trigger:
+#     platform: time_pattern
+#     minutes: '/10'
+#   condition:
+#     condition: and
+#     conditions:
+#       - condition: state
+#         entity_id: input_boolean.at_home
+#         state: 'on'
+#       - condition: numeric_state
+#         entity_id: sensor.waqi_pudong_monitoring_station_shanghai_shang_hai_pu_dong_jian_ce_zhan
+#         below: 75
+#       - condition: state
+#         entity_id: switch.purifier
+#         state: 'on'
+#   action:
+#     - entity_id: switch.purifier
+#       service: switch.turn_off
+#     - entity_id: switch.purifier
+#       service: switch.turn_off
+#     - entity_id: switch.purifier
+#       service: switch.turn_off
 
 # 每整点关一次水泵 避免漏关
 - id: auto_turn_off_pump_hourly
@@ -164,7 +176,7 @@
     # avoid tirggering by mistake while sleeping
     - condition: time
       after: '08:00:00'
-      before: '23:59:00'
+      before: '22:00:00'
   action:
     - service: script.home_return
 
@@ -184,5 +196,9 @@
     - condition: state
       entity_id: input_boolean.playing_sound
       state: 'off'
+    # avoid tirggering by mistake while sleeping
+    - condition: time
+      after: '08:00:00'
+      before: '22:00:00'
   action:
     - service: script.home_leave

@@ -110,6 +110,10 @@
                                         },
                                         {
                                             "entity": "script.amplifier_volume_down_10_times",
+                                            "hold_action": {
+                                                "action": "call-service",
+                                                "service": "script.amplifier_volume_up_10_times"
+                                            },
                                             "icon_height": "105px",
                                             "name": "Vol--",
                                             "show_name": false,
@@ -120,13 +124,23 @@
                                             "type": "entity-button"
                                         },
                                         {
-                                            "entity": "script.amplifier_volume_up_10_times",
+                                            "entity": "switch.amplifier_smart",
+                                            "hold_action": {
+                                                "action": "call-service",
+                                                "service": "switch.turn_off",
+                                                "service_data": {
+                                                    "entity_id": "switch.amplifier_power"
+                                                }
+                                            },
                                             "icon_height": "105px",
-                                            "name": "Vol++",
+                                            "name": "Trun on amplifier",
                                             "show_name": false,
                                             "tap_action": {
                                                 "action": "call-service",
-                                                "service": "script.amplifier_volume_up_10_times"
+                                                "service": "switch.turn_on",
+                                                "service_data": {
+                                                    "entity_id": "switch.amplifier_power"
+                                                }
                                             },
                                             "type": "entity-button"
                                         }

@@ -13,8 +13,9 @@ send_play_pause: 'curl http://10.0.0.13:8836/api?key=playpause'
 send_previous_track: 'curl http://10.0.0.13:8836/api?key=prevtrack'
 send_next_track: 'curl http://10.0.0.13:8836/api?key=nexttrack'
 send_volume_up: 'curl http://10.0.0.13:8836/api?key=volumeup'  # wakeup screen
+send_space: 'curl http://10.0.0.13:8836/api?key=space'
 
-open_musicbee: 'curl http://10.0.0.13:8836/api?open=musicbee'
+open_music_player: 'curl http://10.0.0.13:8836/api?open=spotify'
 keep_awake_on: 'curl http://10.0.0.13:8836/api?run=keep_awake_on'
 keep_awake_off: 'curl http://10.0.0.13:8836/api?run=keep_awake_off'
 screen_off: 'curl http://10.0.0.13:8836/api?run=screen_off'

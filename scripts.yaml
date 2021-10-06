@@ -101,6 +101,7 @@ theater_mode_on:
     # 关灯
     - service: switch.turn_off
       entity_id: group.light
+    - delay: 00:00:10
     # 关电脑屏幕
     - service: switch.turn_off
       entity_id: switch.monitor
@@ -156,11 +157,13 @@ home_return:
       entity_id:
         - switch.amplifier_smart  # 开功放
         - switch.monitor  # 开显示器
+        - switch.aircon_smart
+        - switch.purifier
     - service: shell_command.say_welcome_back  # 欢迎问候
     - service: shell_command.send_volume_up  # wakeup screen
-    - service: shell_command.open_musicbee  # 打开播放器
-    - delay: 00:00:03
-    - service: shell_command.send_next_track  # 播放（远程电脑上已开启的播放器）
+    - service: shell_command.open_music_player  # 打开播放器
+    - delay: 00:00:05
+    - service: shell_command.send_space  # 播放（远程电脑上已开启的播放器）
 
 home_leave:
   alias: 'Leave Home'
