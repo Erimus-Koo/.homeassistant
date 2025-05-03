@@ -29,10 +29,22 @@ filter:
     - light.light_2
     - light.light_3
 
-    # Pump
+    # Plugs
+    - switch.hejiaqin_switch
+
+    # Pump (Plug)
     - switch.water_pump
 
-    # Screen
+    # Purifier (Plug)
+    - switch.purifier
+
+    # Fan (Plug)
+    - switch.fan
+
+    # Monitor (Plug)
+    - switch.monitor
+
+    # Screen (Plug)
     # - switch.screen
 
     # Theater mode
@@ -49,11 +61,6 @@ filter:
     # Climate
     - climate.hitachi_ac
 
-    # Purifier
-    - switch.purifier
-
-    # Monitor
-    - switch.monitor
 
   # exclude_entities:  # 要排除的
   #   - remote.broadlink

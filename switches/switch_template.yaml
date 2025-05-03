@@ -21,6 +21,8 @@
     # 空调根据温度开启 ==============================
     # 这里是根据当前温度，判断空调开启是制冷还是制热。
     # 其中温度数据来自sensor.pudong_temperature
+    # 这里只负责点击按钮后的开关 但是希望点了一定会开
+    # 至于到家要不要自动打开，则放到 scripts 里到家自动化中判断
     aircon_smart:
       friendly_name: Aircon
       icon_template: mdi:thermostat
@@ -28,25 +30,25 @@
       turn_on:
         - service: climate.set_temperature
           entity_id: climate.hitachi_ac
-          # temperature: 28
+          # temperature: 27
           data_template:
             temperature: >
               {% if states('sensor.pudong_temperature') | float < 15 %}
                 30
-              {% elif states('sensor.pudong_temperature') | float > 20 %}
+              {% elif states('sensor.pudong_temperature') | float > 27 %}
                 28
               {% else %}
                 28
               {% endif %}
             hvac_mode: >  # 偶尔会有sensor取不到值的情况
               {% if states('sensor.pudong_temperature') == '' %}
-                off
-              {% elif states('sensor.pudong_temperature') | float < 15 %}
+                fan
+              {% elif states('sensor.pudong_temperature') | float < 20 %}
                 heat
-              {% elif states('sensor.pudong_temperature') | float > 20 %}
+              {% elif states('sensor.pudong_temperature') | float >= 20 %}
                 cool
               {% else %}
-                dry
+                fan
               {% endif %}
       turn_off:
         - service: climate.turn_off
@@ -118,6 +120,15 @@
               switch.blank
             {% endif %}
 
+    hejiaqin_switch:
+      friendly_name: Philips Plug
+      icon_template: mdi:power-socket-au
+      value_template: "{{ states('switch.philips_plug') }}"
+      turn_on:
+        service: rest_command.hejiaqin_switch_on
+      turn_off:
+        service: rest_command.hejiaqin_switch_off
+
     amplifier_smart:
       friendly_name: Amplifier smart
       icon_template: mdi:speaker
@@ -153,3 +164,4 @@
         - service: script.home_return
       turn_off:
         - service: script.home_leave
+

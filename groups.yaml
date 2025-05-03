@@ -23,6 +23,7 @@ less_used_switches:
     - switch.light_1
     - light.light_2
     - switch.light_3
+    - switch.fan
     - switch.water_pump
     - switch.purifier
     - switch.monitor

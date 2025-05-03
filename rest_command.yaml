@@ -1,0 +1,22 @@
+# 和家亲飞利浦插座
+hejiaqin_switch_on:
+  url: https://andlink.komect.com/espapi/v3/cloud/json/family/devices/parameters/control
+  method: POST
+  headers:
+    Host: andlink.komect.com
+    Accept: "application/json, text/html"
+    API_KEY: !secret hejiaqin_switch_api_key
+  payload: '{"deviceId": "CMCC-590693-C8C9A3123C10", "parameters": {"param": [{"name": "outletStatus","content": "1"}]}}'
+  content_type:  'application/json'
+  verify_ssl: true
+
+hejiaqin_switch_off:
+  url: https://andlink.komect.com/espapi/v3/cloud/json/family/devices/parameters/control
+  method: POST
+  headers:
+    Host: andlink.komect.com
+    Accept: "application/json, text/html"
+    API_KEY: !secret hejiaqin_switch_api_key
+  payload: '{"deviceId": "CMCC-590693-C8C9A3123C10", "parameters": {"param": [{"name": "outletStatus","content": "0"}]}}'
+  content_type:  'application/json'
+  verify_ssl: true

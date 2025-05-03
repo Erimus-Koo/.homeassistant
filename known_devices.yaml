@@ -5,3 +5,17 @@ ping_iphonexr:
   name: ping_iphonexr
   picture:
   track: true
+
+ping_iphone14pro:
+  icon:
+  mac:
+  name: ping_iphone14pro
+  picture:
+  track: true
+
+ping_applewatch7:
+  icon:
+  mac:
+  name: ping_applewatch7
+  picture:
+  track: true

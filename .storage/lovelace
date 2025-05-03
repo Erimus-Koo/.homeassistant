@@ -56,7 +56,7 @@
                                 {
                                     "cards": [
                                         {
-                                            "entity": "light.light_2",
+                                            "entity": "switch.light_1_smart",
                                             "icon_height": "105px",
                                             "show_name": false,
                                             "type": "entity-button"
@@ -68,7 +68,7 @@
                                             "type": "entity-button"
                                         },
                                         {
-                                            "entity": "switch.light_1",
+                                            "entity": "switch.light_2_smart",
                                             "icon_height": "105px",
                                             "show_name": false,
                                             "type": "entity-button"
@@ -79,7 +79,8 @@
                                 {
                                     "cards": [
                                         {
-                                            "entity": "switch.theater_mode",
+                                            "entity": "switch.fan",
+                                            "icon": "mdi:fan",
                                             "icon_height": "105px",
                                             "show_name": false,
                                             "type": "entity-button"

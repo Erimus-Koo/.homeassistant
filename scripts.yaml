@@ -151,18 +151,23 @@ home_return:
     - service_template: >  # 太阳落山的话开灯
         switch.turn_{% if is_state('sun.sun','below_horizon') %}on{% else %}off{% endif %}
       entity_id:
-        - switch.light_2_smart
-        - switch.light_3_smart
+        - group.light
+
+    # 温度较低或较高时才自动开空调
+    - service_template: >
+        switch.turn_{{ 'on' if states('sensor.pudong_temperature') == '' or (states('sensor.pudong_temperature') | float < 10 or states('sensor.pudong_temperature') | float > 30) else 'off' }}
+      entity_id:
+        - switch.aircon_smart
     - service: switch.turn_on
       entity_id:
         - switch.amplifier_smart  # 开功放
         - switch.monitor  # 开显示器
-        - switch.aircon_smart
         - switch.purifier
+        - switch.fan
     - service: shell_command.say_welcome_back  # 欢迎问候
     - service: shell_command.send_volume_up  # wakeup screen
     - service: shell_command.open_music_player  # 打开播放器
-    - delay: 00:00:05
+    - delay: 00:00:10
     - service: shell_command.send_space  # 播放（远程电脑上已开启的播放器）
 
 home_leave:
@@ -178,5 +183,6 @@ home_leave:
         - switch.water_pump
         - switch.aircon_smart
         - switch.purifier
+        - switch.fan
         - group.light
     - service: shell_command.screen_off  # 息屏

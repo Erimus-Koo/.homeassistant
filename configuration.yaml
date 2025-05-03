@@ -91,8 +91,8 @@ person:
     id: erimus
     user_id: !secret home_assistant_user_id
     device_trackers:
-      - device_tracker.erimuss_iphonexr
-      - device_tracker.ping_iphonexr
+      - device_tracker.ping_applewatch7
+      - device_tracker.ping_iphone14pro
 
 # Track the sun 日出/日落/等
 sun:
@@ -114,6 +114,9 @@ sensor: !include sensor.yaml
 # 顾名思义 就是命令行
 shell_command: !include shell_command.yaml
 
+# 添加网络请求
+rest_command: !include rest_command.yaml
+
 # binary_sensor:
 #   - platform: ping
 #     host: 10.0.0.22
@@ -125,7 +128,8 @@ device_tracker:  # 设备跟踪器
   # 使用ping确认手机是否接入局域网
   - platform: ping
     hosts:
-      ping_iphonexr: 10.0.0.22
+      ping_applewatch7: 10.0.0.23
+      ping_iphone14pro: 10.0.0.24
     consider_home: 900  # 判断离开所需的秒数
 
 # 使用icloud追踪位置
